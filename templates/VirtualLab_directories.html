@@ -11,10 +11,22 @@
         .hidden {
             display: none !important;
         }
+        .bg-vlabs {
+            position: absolute;
+            top: 0%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/stair_robots.png');
+            background-repeat: no-repeat;
+            background-size: auto 100%;
+            background-position: right;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
-    <div class="background1"></div>
+    <div class="bg-vlabs"></div>
     <div class="header">
         <!-- Left Image -->
         <img src="../images/EASE_logo.png" alt="Left Image"> <!-- Replace with your left image file -->
@@ -44,7 +56,7 @@
         </ul>
     </div>
 
-    <header class="bg-primary text-white text-center py-4">
+    <header class="bg-secondary text-white text-center py-4">
         <h1 class="display-5">Virtual Labs Directory</h1>
         <p class="lead">Find and explore the labs best suited for your research needs</p>
     </header>
