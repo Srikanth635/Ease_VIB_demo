@@ -28,39 +28,39 @@
     <div class="background"></div>
 
     <!-- Header Section -->
-    <header class="bg-transparent text-center py-5">
+    <header class="bg-gradient text-center py-2" style="background: linear-gradient(to bottom, #003366, #f0f0f0);">
         <div class="container d-flex flex-column flex-md-row align-items-center justify-content-around">
             <!-- Left Logo -->
             <img src="../images/EASE_logo.png" alt="Left Image" class="img-fluid" style="max-width: 250px; height: auto;">
-
+    
             <!-- Header Text -->
             <div>
-                <h1 class="display-4 text-light">EASE Virtual Research Building</h1>
-                <p class="lead text-light">Driving Collaboration, Innovation, and Accessibility in AI and Robotics</p>
+                <h1 class="display-4 text-white" style="font-weight: 700;">EASE Virtual Research Building</h1>
+                <p class="lead text-white" style="font-size: 1.2rem;">Driving Collaboration, Innovation, and Accessibility in AI and Robotics</p>
             </div>
-
+    
             <!-- Right Logo -->
             <img src="../images/Logo - IAI Schrift.png" alt="Right Image" class="img-fluid" style="max-width: 250px; height: auto;">
         </div>
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-md navbar-dark">
-        <div class="container" style="background-color: rgba(0, 0, 0, 0.7); border-radius: 8px;">
+    <nav class="navbar navbar-expand-md">
+        <div class="container" style="background-color: rgba(0, 51, 102, 0.9); border-radius: 8px; padding: 0.5rem 1rem;">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" style="color: #FFFFFF;"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a href="home.html" class="nav-link fs-5 fw-bold">Home</a></li>
-                    <li class="nav-item"><a href="aboutVRB.html" class="nav-link fs-5 fw-bold">About VRB</a></li>
-                    <li class="nav-item"><a href="Research.html" class="nav-link fs-5 fw-bold">Research Highlights</a></li>
-                    <li class="nav-item"><a href="Collaboration.html" class="nav-link fs-5 fw-bold">Collaborate</a></li>
-                    <li class="nav-item"><a href="Resources.html" class="nav-link fs-5 fw-bold">Resources</a></li>
-                    <li class="nav-item"><a href="Education.html" class="nav-link fs-5 fw-bold">Education</a></li>
-                    <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold">ViB</a></li>
-                    <li class="nav-item"><a href="competition.html" class="nav-link fs-5 fw-bold">Competition</a></li>
-                    <li class="nav-item"><a href="Contact.html" class="nav-link fs-5 fw-bold">Contact</a></li>
+                    <li class="nav-item"><a href="home.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Home</a></li>
+                    <li class="nav-item"><a href="aboutVRB.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">About VRB</a></li>
+                    <li class="nav-item"><a href="Research.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Research Highlights</a></li>
+                    <li class="nav-item"><a href="Collaboration.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Collaborate</a></li>
+                    <li class="nav-item"><a href="Resources.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Resources</a></li>
+                    <li class="nav-item"><a href="Education.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Education</a></li>
+                    <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">ViB</a></li>
+                    <li class="nav-item"><a href="competition.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Competition</a></li>
+                    <li class="nav-item"><a href="Contact.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -71,8 +71,16 @@
         <div class="row justify-content-left">
             <!-- Call-to-Action Buttons -->
             <div class="col-md-4 d-flex flex-column align-items-center gap-3">
-                <a href="VirtualLab_directories.html" class="btn btn-danger btn-lg w-100">Explore Labs</a>
-                <a href="#join" class="btn btn-danger btn-lg w-100">Join the Community</a>
+                <a href="VirtualLab_directories.html" 
+                   class="btn btn-lg w-100 call-to-action-btn" 
+                   style="background-color: crimson; color: #fff; font-weight: 700; transition: background-color 0.3s ease;">
+                    Explore Labs
+                </a>
+                <a href="#join" 
+                   class="btn btn-lg w-100 call-to-action-btn" 
+                   style="background-color: crimson; color: #fff; font-weight: 700; transition: background-color 0.3s ease;">
+                    Join the Community
+                </a>
             </div>
         </div>
     </div>
@@ -82,27 +90,33 @@
         <div class="row g-4">
             <!-- Virtual Labs Box -->
             <div class="col-md-4">
-                <a href="virtual-labs.html" class="card text-white text-center h-100 text-decoration-none" style="background-color: darkslateblue;">
+                <a href="virtual-labs.html" 
+                   class="card text-white text-center h-100 text-decoration-none" 
+                   style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <div class="card-body">
-                        <h5 class="card-title">Virtual Labs</h5>
+                        <h5 class="card-title fw-bold">Virtual Labs</h5>
                         <p class="card-text">Access the virtual research environments.</p>
                     </div>
                 </a>
             </div>
             <!-- Open Data Box -->
             <div class="col-md-4">
-                <a href="open-data.html" class="card text-white text-center h-100 text-decoration-none" style="background-color: darkslateblue;">
+                <a href="https://data.open-ease.org/neems" target="_blank" 
+                   class="card text-white text-center h-100 text-decoration-none" 
+                   style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <div class="card-body">
-                        <h5 class="card-title">Open Data</h5>
+                        <h5 class="card-title fw-bold">Open Data</h5>
                         <p class="card-text">Explore research datasets and tools.</p>
                     </div>
                 </a>
             </div>
             <!-- Educational Resources Box -->
             <div class="col-md-4">
-                <a href="educational-resources.html" class="card text-white text-center h-100 text-decoration-none" style="background-color: darkslateblue;">
+                <a href="educational-resources.html" 
+                   class="card text-white text-center h-100 text-decoration-none" 
+                   style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <div class="card-body">
-                        <h5 class="card-title">Educational Resources</h5>
+                        <h5 class="card-title fw-bold">Educational Resources</h5>
                         <p class="card-text">Learn through interactive materials and tutorials.</p>
                     </div>
                 </a>

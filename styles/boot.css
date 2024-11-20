@@ -39,10 +39,18 @@ footer {
 }
 
 .navbar .nav-link {
-font-size: 1.25rem; /* Custom font size */
-font-weight: 700;  /* Bold text */
-color: #ffffff;    /* Ensure the font color is white */
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
+
 .navbar .nav-link:hover {
-    color: rgb(72, 61, 139);    /* Highlight color on hover */
+    color: rgb(72, 61, 139);
+    transform: scale(1.05);
+}
+
+.call-to-action-btn.btn:hover.btn:hover {
+    background-color: #FF5733;
 }
