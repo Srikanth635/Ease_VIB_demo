@@ -1,0 +1,44 @@
+/* Tile Container */
+.tile-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+  }
+  
+  /* Individual Tiles */
+  .tile {
+    text-decoration: none;
+    display: block;
+    width: 150px;
+    height: 100px;
+    background-color: #0066cc;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  /* Hover Effects for Tiles */
+  .tile:hover {
+    background-color: #004d99;
+    transform: translateY(-5px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .tile {
+      width: 120px;
+      height: 80px;
+      font-size: 0.9rem;
+      line-height: 80px;
+    }
+  }
+  
