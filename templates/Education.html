@@ -6,7 +6,7 @@
     <title>Educational Resources</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/demostyles.css">
+    <link rel="stylesheet" href="../styles/boot.css">
     <style>
         .card:hover {
             transform: scale(1.05);
@@ -17,43 +17,73 @@
             padding: 20px;
             border-radius: 10px;
         }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/bg_image1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+        }
     </style>
 </head>
 <body>
-    <div class="background1"></div>
-    <div class="header">
-        <!-- Left Image -->
-        <img src="../images/EASE_logo.png" alt="Left Image">
+    <!-- Background Image -->
+    <div class="background"></div>
 
-        <!-- Header Content -->
-        <div class="header-content">
-            <h1>EASE Virtual Research Building</h1>
-            <p>Driving Collaboration, Innovation, and Accessibility in AI and Robotics</p>
+    <!-- Header Section -->
+    <header class="bg-transparent text-center py-5">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-around">
+            <!-- Left Logo -->
+            <img src="../images/EASE_logo.png" alt="Left Image" class="img-fluid" style="max-width: 250px; height: auto;">
+
+            <!-- Header Text -->
+            <div>
+                <h1 class="display-4 text-light">EASE Virtual Research Building</h1>
+                <p class="lead text-light">Driving Collaboration, Innovation, and Accessibility in AI and Robotics</p>
+            </div>
+
+            <!-- Right Logo -->
+            <img src="../images/Logo - IAI Schrift.png" alt="Right Image" class="img-fluid" style="max-width: 250px; height: auto;">
         </div>
-
-        <!-- Right Image -->
-        <img src="../images/Logo - IAI Schrift.png" alt="Right Image">
-    </div>
+    </header>
 
     <!-- Navigation Bar -->
-    <div class="navbar">
-        <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="aboutVRB.html">About VRB</a></li>
-            <li><a href="Research.html">Research Highlights</a></li>
-            <li><a href="Collaboration.html">Collaborate</a></li>
-            <li><a href="Resources.html">Resources</a></li>
-            <li><a href="Education.html">Education</a></li>
-            <li><a href="ViBHomepage_new.html">ViB</a></li>
-            <li><a href="competition.html">Competition</a></li>
-            <li><a href="Contact.html">Contact</a></li>
-        </ul>
-    </div>
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container" style="background-color: rgba(0, 0, 0, 0.2); border-radius: 8px;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a href="home.html" class="nav-link fs-5 fw-bold">Home</a></li>
+                    <li class="nav-item"><a href="aboutVRB.html" class="nav-link fs-5 fw-bold">About VRB</a></li>
+                    <li class="nav-item"><a href="Research.html" class="nav-link fs-5 fw-bold">Research Highlights</a></li>
+                    <li class="nav-item"><a href="Collaboration.html" class="nav-link fs-5 fw-bold">Collaborate</a></li>
+                    <li class="nav-item"><a href="Resources.html" class="nav-link fs-5 fw-bold">Resources</a></li>
+                    <li class="nav-item"><a href="Education.html" class="nav-link fs-5 fw-bold">Education</a></li>
+                    <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold">ViB</a></li>
+                    <li class="nav-item"><a href="competition.html" class="nav-link fs-5 fw-bold">Competition</a></li>
+                    <li class="nav-item"><a href="Contact.html" class="nav-link fs-5 fw-bold">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <header class="bg-primary text-white text-center py-4">
-        <h1 class="display-5">Educational Resources</h1>
-        <p class="lead">Learn, explore, and excel in robotics with our interactive materials and courses.</p>
+    <header class="bg-transparent text-center py-4">
+        <div class="container text-black py-4 rounded" style="background-color: white;">
+            <h1 class="display-5">Educational Resources</h1>
+            <p class="lead">Learn, explore, and excel in robotics with our interactive materials and courses.</p>
+            <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-light text-primary">Explore the Highlights</button>
+            </div>
+        </div>
     </header>
+
     <section class="container my-5">
         <h2 class="text-center mb-4">Interactive Textbook: AI-Powered Robotics</h2>
         <div class="card mx-auto" style="max-width: 800px;">
@@ -142,7 +172,7 @@
             </div>
         </div>
     </section>
-    <footer class="bg-transparent text-black text-center py-3">
+    <footer class="bg-dark text-white text-center py-3">
         &copy; 2024 EASE Virtual Research Building
     </footer>
     <!-- Bootstrap JS -->
