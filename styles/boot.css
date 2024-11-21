@@ -47,10 +47,17 @@ footer {
 }
 
 .navbar .nav-link:hover {
-    color: rgb(72, 61, 139);
+    color: rgb(0, 0, 0, 1);
     transform: scale(1.05);
 }
 
-.call-to-action-btn.btn:hover.btn:hover {
-    background-color: #FF5733;
+.callaction {
+    background-color: crimson; 
+    color: #fff; 
+    font-weight: 700; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.callaction:hover {
+    background-color: darkred !important; /* Ensure hover color applies */
+    color: lightgray !important; /* Optional: Change text color */
 }

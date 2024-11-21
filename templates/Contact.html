@@ -23,7 +23,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('../images/stair_robots.png');
+            background-image: url('../images/robo_welcome.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -36,7 +36,7 @@
     <div class="background"></div>
 
     <!-- Header Section -->
-    <header class="bg-gradient text-center py-2" style="background: linear-gradient(to bottom, #003366, #f0f0f0);">
+    <header class="text-center py-2" style="background: linear-gradient(to top, rgba(255, 255, 255,0), rgba(0, 0, 0, 0.8));  overflow: hidden;">
         <div class="container d-flex flex-column flex-md-row align-items-center justify-content-around">
             <!-- Left Logo -->
             <img src="../images/EASE_logo.png" alt="Left Image" class="img-fluid" style="max-width: 250px; height: auto;">
@@ -44,11 +44,13 @@
             <!-- Header Text -->
             <div>
                 <h1 class="display-4 text-white" style="font-weight: 700;">EASE Virtual Research Building</h1>
-                <p class="lead text-white" style="font-size: 1.2rem;">Driving Collaboration, Innovation, and Accessibility in AI and Robotics</p>
+                <p class="lead text-white fw-bold" style="font-size: 1.2rem;">Driving Collaboration, Innovation, and Accessibility in AI and Robotics</p>
             </div>
     
             <!-- Right Logo -->
-            <img src="../images/Logo - IAI Schrift.png" alt="Right Image" class="img-fluid" style="max-width: 250px; height: auto;">
+            <a href="https://ai.uni-bremen.de/" target="_blank">
+                <img src="../images/Logo - IAI Schrift.png" alt="Right Image" class="img-fluid" style="max-width: 250px; height: auto;">
+            </a>
         </div>
     </header>
 
@@ -66,7 +68,7 @@
                     <li class="nav-item"><a href="Collaboration.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Collaborate</a></li>
                     <li class="nav-item"><a href="Resources.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Resources</a></li>
                     <li class="nav-item"><a href="Education.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Education</a></li>
-                    <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">ViB</a></li>
+                    <!-- <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">ViB</a></li> -->
                     <li class="nav-item"><a href="competition.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Competition</a></li>
                     <li class="nav-item"><a href="Contact.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Contact</a></li>
                 </ul>
@@ -75,58 +77,58 @@
     </nav>
 
     <header class="bg-transparent text-center py-4">
-        <div class="container text-black py-4 rounded" style="background-color: white;">
-        <h1 class="display-5">Contact the EASE Team</h1>
+        <div class="container text-white py-4 rounded">
+        <h1 class="display-5" >Contact the Team</h1>
         <p class="lead">We'd love to hear from you! Reach out with your inquiries, feedback, or ideas.</p>
-            <div class="d-flex justify-content-center gap-2">
-                <button class="btn btn-light text-primary">Explore the Highlights</button>
-            </div>
         </div>
     </header>
 
     <section class="container my-5">
-        <h2 class="text-center mb-4">Get in Touch</h2>
+        <!-- <h2 class="text-center mb-4">Get in Touch</h2> -->
         <div class="row g-5">
             <!-- Contact Form -->
-            <div class="col-md-6">
-                <h3>Contact Form</h3>
+            <div class="col-md-6 text-white">
+                <h3 class="fw-bold mb-3">Contact Form</h3>
                 <form>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                        <label for="name" class="form-label fw-bold">Name</label>
+                        <div class="col-8"><input type="text" class="form-control" id="name" placeholder="Your Name" required></div>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        <label for="email" class="form-label fw-bold">Email</label>
+                        <div class="col-8"><input type="email" class="form-control" id="email" placeholder="Your Email" required></div>
                     </div>
                     <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+                        <label for="message" class="form-label fw-bold">Message</label>
+                        <div class="col-8"><textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea></div>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
             <!-- Contact Details -->
-            <div class="col-md-6">
-                <h3>Contact Details</h3>
+            <div class="col-md-6 text-white">
+                <h3 class="fw-bold mb-3">Contact Details</h3>
                 <p>
-                    <strong>Email:</strong> <a href="mailto:contact@ease-team.org">contact@ease-team.org</a><br>
-                    <strong>Phone:</strong> +49 123 456 7890<br>
+                    <strong>Email:</strong> <a href="mailto:ai-office@cs.uni-bremen.de">ai-office@cs.uni-bremen.de</a><br>
+                    <strong>Phone:</strong> +49 421 218 64000<br>
+                    <strong>Fax:</strong> +49 421 218 64047<br>
                     <strong>Address:</strong><br>
-                    EASE Virtual Research Building<br>
-                    Robotics Avenue 42<br>
-                    12345 Robotics City, Germany
+                    University of Bremen<br>
+                    Institute for Artificial Intelligence<br>
+                    Am Fallturm 1<br>
+                    28359 Bremen<br>
+                    Germany
                 </p>
                 <!-- Social Media Links -->
                 <h3>Follow Us</h3>
                 <div class="social-icons">
-                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/company/iai-bremen/" target="_blank" aria-label="LinkedIn">
                         <i class="bi bi-linkedin"></i>
                     </a>
-                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                    <!-- <a href="https://twitter.com" target="_blank" aria-label="Twitter">
                         <i class="bi bi-twitter"></i>
-                    </a>
-                    <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+                    </a> -->
+                    <a href="https://www.youtube.com/user/agkiunibremen" target="_blank" aria-label="YouTube">
                         <i class="bi bi-youtube"></i>
                     </a>
                 </div>

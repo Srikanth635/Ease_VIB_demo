@@ -39,7 +39,7 @@
     <div class="background"></div>
 
     <!-- Header Section -->
-    <header class="bg-gradient text-center py-2" style="background: linear-gradient(to bottom, #003366, #f0f0f0);">
+    <header class="text-center py-2" style="background: linear-gradient(to top, rgba(255, 255, 255,0), rgba(0, 0, 0, 0.8));  overflow: hidden;">
         <div class="container d-flex flex-column flex-md-row align-items-center justify-content-around">
             <!-- Left Logo -->
             <img src="../images/EASE_logo.png" alt="Left Image" class="img-fluid" style="max-width: 250px; height: auto;">
@@ -69,7 +69,7 @@
                     <li class="nav-item"><a href="Collaboration.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Collaborate</a></li>
                     <li class="nav-item"><a href="Resources.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Resources</a></li>
                     <li class="nav-item"><a href="Education.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Education</a></li>
-                    <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">ViB</a></li>
+                    <!-- <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">ViB</a></li> -->
                     <li class="nav-item"><a href="competition.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Competition</a></li>
                     <li class="nav-item"><a href="Contact.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Contact</a></li>
                 </ul>
@@ -78,15 +78,15 @@
     </nav>
 
     <header class="bg-transparent text-center py-4">
-        <div class="container text-black py-4 rounded" style="background-color: white;">
-            <h1 class="display-5">Resources</h1>
-            <p class="lead">Access frameworks, tools, open datasets, and publications driving robotics innovation.</p>
-            <div class="d-flex justify-content-center gap-2">
+        <div class="container text-black py-4 rounded">
+            <!-- <h1 class="display-5">Resources</h1> -->
+            <h1 class="lead text-center display-6" style="color: rgba(0, 51, 102, 1);">Access frameworks, tools, open datasets, and publications driving robotics innovation.</h1>
+            <!-- <div class="d-flex justify-content-center gap-2">
                 <button class="btn btn-light text-primary">Explore the Highlights</button>
-            </div>
+            </div> -->
         </div>
     </header>
-    <section class="container my-5">
+    <section class="container my-3">
         <h2 class="text-center mb-4">Frameworks and Tools</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
@@ -94,7 +94,7 @@
                     <div class="card-body">
                         <h5 class="card-title">CRAM</h5>
                         <p class="card-text">A framework for cognitive robot abstract architectures to perform high-level tasks.</p>
-                        <a href="#" class="btn btn-primary">Explore CRAM</a>
+                        <a href="https://github.com/cram2/pycram" target="_blank" class="btn btn-primary">Explore CRAM</a>
                     </div>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                     <div class="card-body">
                         <h5 class="card-title">KnowRob</h5>
                         <p class="card-text">A knowledge-processing system for autonomous robots that integrates symbolic and geometric reasoning.</p>
-                        <a href="#" class="btn btn-primary">Explore KnowRob</a>
+                        <a href="https://github.com/knowrob/knowrob" class="btn btn-primary">Explore KnowRob</a>
                     </div>
                 </div>
             </div>
@@ -112,11 +112,11 @@
                     <div class="card-body">
                         <h5 class="card-title">RoboKudo</h5>
                         <p class="card-text">An open-source platform for task planning, execution, and monitoring in robotic systems.</p>
-                        <a href="#" class="btn btn-primary">Explore RoboKudo</a>
+                        <a href="https://gitlab.informatik.uni-bremen.de/robokudo/robokudo" target="_blank" class="btn btn-primary">Explore RoboKudo</a>
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <div class="card h-100 shadow-sm resource-card">
                     <div class="card-body">
                         <h5 class="card-title">Generative AI LLM</h5>
@@ -124,13 +124,22 @@
                         <a href="#" class="btn btn-primary">Explore LLM</a>
                     </div>
                 </div>
+            </div> -->
+            <div class="col">
+                <div class="card h-100 shadow-sm resource-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Giskard</h5>
+                        <p class="card-text">A powerful framework for motion planning and control in high-dimensional robotic spaces.</p>
+                        <a href="https://github.com/SemRoCo/giskardpy" target="_blank" class="btn btn-primary">Explore Giskard</a>
+                    </div>
+                </div>
             </div>
             <div class="col">
                 <div class="card h-100 shadow-sm resource-card">
                     <div class="card-body">
-                        <h5 class="card-title">Giskard7</h5>
-                        <p class="card-text">A powerful framework for motion planning and control in high-dimensional robotic spaces.</p>
-                        <a href="#" class="btn btn-primary">Explore Giskard7</a>
+                        <h5 class="card-title">Joint Probability Trees</h5>
+                        <p class="card-text">Joint Probability Trees (short JPTs) are a formalism for learning of and reasoning about joint probability distributions, which is tractable for practical applications.</p>
+                        <a href="https://github.com/joint-probability-trees/jpt-dev" target="_blank" class="btn btn-primary">Explore JPTs</a>
                     </div>
                 </div>
             </div>
