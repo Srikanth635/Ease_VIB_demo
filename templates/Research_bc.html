@@ -3,17 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competitions</title>
+    <title>Research Highlights</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/boot.css">
     <style>
-        .competition-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .timeline-container {
+            position: relative;
+            padding: 20px 0;
         }
-        .competition-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #005b96;
+            z-index: 1;
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px;
+        }
+        .timeline-item.left {
+            left: 0;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item .content {
+            position: relative;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+        .timeline-item.left .content {
+            margin-right: 20px;
+        }
+        .timeline-item.right .content {
+            margin-left: 20px;
+        }
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: #005b96;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
         }
         .background {
             position: fixed;
@@ -72,77 +115,97 @@
         </div>
     </nav>
 
-
-    <header class="bg-transparent text-center py-4">
-        <div class="container text-black py-4 rounded" style="background-color: white;">
-            <h1 class="display-5">Robotics Competitions</h1>
-            <p class="lead">Explore the world of robotics competitions and find your next challenge!</p>
-            <div class="d-flex justify-content-center gap-2">
-                <button class="btn btn-light text-primary">Explore the Highlights</button>
+    
+    <section class="container my-5 bg-secondary">
+        <header class="bg-transparent text-center py-4">
+            <div class="container text-black py-4 rounded">
+                <h1 class="display-5">Research Highlights: Advancing Everyday Robotics</h1>
+                <p class="lead">Explore the milestones, breakthroughs, and real-world impact of the EASE initiative</p>
+                <div class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-light text-primary">Explore the Highlights</button>
+                </div>
+            </div>
+        </header>
+    
+        <h2 class="text-center mb-4">Interactive Research Timeline</h2>
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            <div class="timeline-item left">
+                <div class="timeline-dot"></div>
+                <div class="content">
+                    <h3>Phase 1: Foundational Research</h3>
+                    <p>Discover the early milestones in robotics research.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-dot"></div>
+                <div class="content">
+                    <h3>Phase 2: Rational Reconstruction</h3>
+                    <p>Explore advancements in robot cognitive capabilities.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-dot"></div>
+                <div class="content">
+                    <h3>Phase 3: Co-Construction</h3>
+                    <p>Learn about the integration of robots and humans in co-construction tasks.</p>
+                </div>
             </div>
         </div>
-    </header>
-
+    </section>
     <section class="container my-5">
-        <h2 class="text-center mb-4">Current Competitions</h2>
+        <h2 class="text-center mb-4">Case Studies</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- RoboCup@Home -->
             <div class="col">
-                <div class="card h-100 shadow-sm competition-card">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title">RoboCup@Home</h5>
-                        <p class="card-text">The premier robotics competition focusing on real-world home environments. Test your robot's ability to assist in daily tasks.</p>
-                        <a href="https://www.robocupathome.org/" target="_blank" class="btn btn-primary">Learn More</a>
+                        <h3 class="card-title">Robotic Sous-Chef</h3>
+                        <p class="card-text">See how robots assist in collaborative meal preparation.</p>
                     </div>
                 </div>
             </div>
-            <!-- DARPA Robotics Challenge -->
             <div class="col">
-                <div class="card h-100 shadow-sm competition-card">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title">DARPA Robotics Challenge</h5>
-                        <p class="card-text">A competition to develop robots capable of complex disaster-response tasks in human-engineered environments.</p>
-                        <a href="https://www.darpa.mil/program/darpa-robotics-challenge" target="_blank" class="btn btn-primary">Learn More</a>
+                        <h3 class="card-title">Assistive Robotics</h3>
+                        <p class="card-text">Learn about robots helping elderly individuals with daily tasks.</p>
                     </div>
                 </div>
             </div>
-            <!-- Amazon Robotics Challenge -->
             <div class="col">
-                <div class="card h-100 shadow-sm competition-card">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title">Amazon Robotics Challenge</h5>
-                        <p class="card-text">A platform to push the boundaries of robotic manipulation and warehouse automation.</p>
-                        <a href="https://aws.amazon.com/robomaker/" target="_blank" class="btn btn-primary">Learn More</a>
+                        <h3 class="card-title">Industrial Automation</h3>
+                        <p class="card-text">Explore applications of robotics in manufacturing settings.</p>
                     </div>
                 </div>
             </div>
-            <!-- IEEE Robotics Competition -->
+        </div>
+    </section>
+    <section class="container my-5">
+        <h2 class="text-center mb-4">NEEMs Visualization</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
-                <div class="card h-100 shadow-sm competition-card">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title">IEEE Robotics Competition</h5>
-                        <p class="card-text">A student-oriented competition promoting innovation in autonomous robotics systems.</p>
-                        <a href="https://www.ieee.org/conferences/robotics.html" target="_blank" class="btn btn-primary">Learn More</a>
+                        <h3 class="card-title">Grasp Event</h3>
+                        <p class="card-text">Robot grasped a coffee cup at 10:35 AM.</p>
                     </div>
                 </div>
             </div>
-            <!-- FIRA RoboWorld Cup -->
             <div class="col">
-                <div class="card h-100 shadow-sm competition-card">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title">FIRA RoboWorld Cup</h5>
-                        <p class="card-text">A global robotics competition emphasizing AI, robotics, and engineering innovation in various scenarios.</p>
-                        <a href="https://www.fira.net/" target="_blank" class="btn btn-primary">Learn More</a>
+                        <h3 class="card-title">Place Event</h3>
+                        <p class="card-text">Robot placed the cup on the table at 10:36 AM.</p>
                     </div>
                 </div>
             </div>
-            <!-- Eurobot -->
             <div class="col">
-                <div class="card h-100 shadow-sm competition-card">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title">Eurobot</h5>
-                        <p class="card-text">A friendly competition encouraging young engineers to design and build autonomous robots.</p>
-                        <a href="https://www.eurobot.org/" target="_blank" class="btn btn-primary">Learn More</a>
+                        <h3 class="card-title">Failure Event</h3>
+                        <p class="card-text">Robot failed to grasp an object due to slippery surface.</p>
                     </div>
                 </div>
             </div>
