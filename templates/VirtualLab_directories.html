@@ -70,20 +70,22 @@
             </div>
         </nav>
 
-    <header class="bg-secondary text-white text-center py-4">
-        <h1 class="display-5">Virtual Labs Directory</h1>
-        <p class="lead">Find and explore the labs best suited for your research needs</p>
-    </header>
+        <header class="text-center py-4">
+            <div class="bg-transparent text-white py-4 px-3 rounded" style="display: inline-block;">
+                <!-- <h1 class="display-5">Virtual Labs Directory</h1> -->
+                <p class="lead display-6 fw-bold">Find and explore the labs best suited for your research needs</p>
+            </div>
+        </header>
     <section class="container my-5">
         <h2 class="text-center mb-4">Filter and Search</h2>
         <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
             <select id="categoryFilter" class="form-select w-auto">
                 <option value="all">All Categories</option>
-                <option value="manipulation">Manipulation</option>
-                <option value="navigation">Navigation</option>
-                <option value="collaboration">Collaboration</option>
-                <option value="vision">Vision</option>
-                <option value="automation">Automation</option>
+                <option value="manipulation">Transportation</option>
+                <option value="navigation">KnowledgeGraphs</option>
+                <option value="collaboration">Manipulation</option>
+                <option value="vision">NEEMs</option>
+                <option value="automation">Retail</option>
             </select>
             <select id="toolsFilter" class="form-select w-auto">
                 <option value="all">All Tools</option>
@@ -100,7 +102,7 @@
             <div class="col" data-category="manipulation" data-tool="simulation">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h3 class="card-title">Object Manipulation Lab</h3>
+                        <h3 class="card-title">Object Transportation Lab</h3>
                         <p class="card-text">Experiment with robotic arms for object manipulation in dynamic settings.</p>
                         <a href="#" class="btn btn-primary">Enter Lab</a>
                     </div>
@@ -109,16 +111,16 @@
             <div class="col" data-category="navigation" data-tool="digital-twins">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h3 class="card-title">Autonomous Navigation Lab</h3>
+                        <h3 class="card-title">Knowledge Graph Lab</h3>
                         <p class="card-text">Develop and test algorithms for navigation in challenging environments.</p>
                         <a href="#" class="btn btn-primary">Enter Lab</a>
                     </div>
                 </div>
             </div>
-            <div class="col" data-category="collaboration" data-tool="cognitive-robotics">
+            <div class="col" data-category="manipulation" data-tool="cognitive-robotics">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h3 class="card-title">Human-Robot Collaboration Lab</h3>
+                        <h3 class="card-title">Manipulation Lab</h3>
                         <p class="card-text">Study interactions between humans and robots in shared tasks.</p>
                         <a href="#" class="btn btn-primary">Enter Lab</a>
                     </div>
@@ -127,7 +129,7 @@
             <div class="col" data-category="vision" data-tool="digital-twins">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h3 class="card-title">Perception and Vision Lab</h3>
+                        <h3 class="card-title">NEEMs Demonstration Lab</h3>
                         <p class="card-text">Explore machine vision techniques for object detection and tracking.</p>
                         <a href="#" class="btn btn-primary">Enter Lab</a>
                     </div>
@@ -136,13 +138,13 @@
             <div class="col" data-category="automation" data-tool="simulation">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h3 class="card-title">Industrial Automation Lab</h3>
+                        <h3 class="card-title">Retail Robotics Lab</h3>
                         <p class="card-text">Optimize robotic workflows in simulated industrial environments.</p>
                         <a href="#" class="btn btn-primary">Enter Lab</a>
                     </div>
                 </div>
             </div>
-            <div class="col" data-category="manipulation" data-tool="cognitive-robotics">
+            <!-- <div class="col" data-category="manipulation" data-tool="cognitive-robotics">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h3 class="card-title">Grasping Techniques Lab</h3>
@@ -150,7 +152,7 @@
                         <a href="#" class="btn btn-primary">Enter Lab</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     <footer class="bg-dark text-white text-center py-3">
