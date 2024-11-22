@@ -18,6 +18,18 @@
             font-family: 'Arial', sans-serif;
             background-color: #f8f9fa;
         }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/research_background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+        }
         .timeline {
             position: relative;
             margin: 50px 0;
@@ -40,6 +52,7 @@
             margin: 20px 0;
             width: 52%;
         }
+        
         .timeline-item-left {
             left: 0;
             text-align: right;
@@ -82,6 +95,9 @@
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 2;
+        }
+        .timeline-content:hover {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
         .timeline-item-left .timeline-content {
             margin-left: auto;
@@ -140,12 +156,7 @@
             top: 67%;
         }
         .timeline-dot[data-year="2025"] {
-            top: 75%;
-        }
-        .timeline-dot[data-year="2026"] {
-            top: 85%;
-        }
-        .timeline-dot[data-year="2027"] {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             top: 95%;
         }
 
@@ -169,12 +180,12 @@
             }
         }
 
-        .tile {
+    .tile {
         position: relative;
         overflow: hidden;
-        background: linear-gradient(135deg, #008080, #20B2AA); /* Tile background */
-        border-radius: 15px; /* Rounded corners */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        background: linear-gradient(135deg, #134175, #154c80);
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         color: white;
         cursor: pointer;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -214,6 +225,7 @@
     </style>
 </head>
 <body>
+    <div class="background"></div>
 
     <!-- Header Section -->
     <header class="text-center py-2" style="background: linear-gradient(to top, rgba(255, 255, 255,0), rgba(0, 0, 0, 0.8));  overflow: hidden;"">
@@ -235,20 +247,17 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-md">
         <div class="container" style="background-color: rgba(0, 51, 102, 0.9); border-radius: 8px; padding: 0.5rem 1rem;">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon" style="color: #FFFFFF;"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a href="home.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Home</a></li>
-                    <li class="nav-item"><a href="aboutVRB.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">About VRB</a></li>
-                    <li class="nav-item"><a href="Research.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Research Highlights</a></li>
-                    <li class="nav-item"><a href="Collaboration.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Collaborate</a></li>
-                    <li class="nav-item"><a href="Resources.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Resources</a></li>
-                    <li class="nav-item"><a href="Education.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Education</a></li>
+                    <li class="nav-item"><a href="../home.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Home</a></li>
+                    <li class="nav-item"><a href="./aboutVRB.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">About VRB</a></li>
+                    <li class="nav-item"><a href="./Research.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Research Highlights</a></li>
+                    <li class="nav-item"><a href="./Collaboration.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Collaborate</a></li>
+                    <li class="nav-item"><a href="./Resources.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Resources</a></li>
+                    <li class="nav-item"><a href="./Education.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Education</a></li>
                     <!-- <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">ViB</a></li> -->
-                    <li class="nav-item"><a href="competition.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Competition</a></li>
-                    <li class="nav-item"><a href="Contact.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Contact</a></li>
+                    <li class="nav-item"><a href="./competition.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Competition</a></li>
+                    <li class="nav-item"><a href="./Contact.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Contact</a></li>
                     <!-- <li class="nav-item"><a href="testing.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Testing</a></li> -->
                 </ul>
             </div>
@@ -258,122 +267,198 @@
     <!-- Timeline -->
     <div class="container my-5">
         <header class="text-center mt-5">
-            <h1 style="color: rgba(0, 51, 102, 1);">Research Timeline</h1>
-            <p class="text-muted">Explore the milestones and achievements of EASE</p>
+            <h1 class="text-white fw-bold">Research Timeline</h1>
+            <p class="text-white">Explore the milestones and achievements of EASE</p>
         </header>
 
         <div class="timeline">
-            <!-- Phase 1 Highlights -->
-            <div class="timeline-dot" data-year="2017"></div>
-            <div class="timeline-dot" data-year="2018"></div>
-            <div class="timeline-dot" data-year="2019"></div>
-            <div class="timeline-dot" data-year="2020_"></div>
-        
+        <!-- Phase 1 Highlights -->
             <div class="timeline-item timeline-item-left" data-year="2017">
-                <div class="timeline-content" 
-                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <div class="timeline-content"
+                    data-bs-toggle="modal" data-bs-target="#phase1Modal"
+                    style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
                     <h3 class="text-white fw-bold">EASE CRC Initiation (Phase I)</h3>
                     <p class="text-white">Initiation of the EASE CRC, focusing on understanding and replicating human everyday activities in robotics.</p>
                 </div>
             </div>
-            <div class="timeline-item timeline-item-right" data-year="2018">
-                <div class="timeline-content"
-                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold">CRAM-I Development (Phase I)</h3>
-                    <p class="text-white">Developed the first version of the Cognitive Robot Abstract Machine (CRAM), enabling robots to perform complex manipulation tasks.</p>
-                </div>
-            </div>
-            <div class="timeline-item timeline-item-left" data-year="2019">
-                <div class="timeline-content"
-                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold">KnowRob2.0 Introduction (Phase I)</h3>
-                    <p class="text-white">Introduced KnowRob2.0, an advanced knowledge representation and reasoning framework for robotic agents.</p>
-                </div>
-            </div>
-            <div class="timeline-item timeline-item-right" data-year="2020">
-                <div class="timeline-content"
-                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold">NEEM Hub Establishment (Phase I)</h3>
-                    <p class="text-white">Established the NEEM Hub, a data storage system for Narrative-enabled Episodic Memories, facilitating knowledge extraction from robot experiences.</p>
-                </div>
-            </div>
-        
+
             <!-- Phase 2 Highlights -->
-            <div class="timeline-dot" data-year="2020"></div>
-            <div class="timeline-dot" data-year="2021"></div>
-            <div class="timeline-dot" data-year="2022"></div>
-            <div class="timeline-dot" data-year="2023"></div>
-        
-            <div class="timeline-item timeline-item-left" data-year="2020">
-                <div class="timeline-content"
-                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold">CRAM-II Architecture (Phase II)</h3>
-                    <p class="text-white">Developed the Cognitive Robot Abstract Machine (CRAM-II), enabling advanced reasoning and action planning in everyday scenarios.</p>
-                </div>
-            </div>
             <div class="timeline-item timeline-item-right" data-year="2021">
                 <div class="timeline-content"
-                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    data-bs-toggle="modal" data-bs-target="#phase2Modal"
+                    style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
                     <h3 class="text-white fw-bold">Generative AI Integration (Phase II)</h3>
                     <p class="text-white">Introduced generative AI techniques, allowing robots to predict, adapt, and improve task execution dynamically.</p>
                 </div>
             </div>
-            <div class="timeline-item timeline-item-left" data-year="2022">
-                <div class="timeline-content"
-                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold">Virtual Research Building (VRB) (Phase II)</h3>
-                    <p class="text-white">Launched the VRB, a digital twin environment for simulation, training, and collaborative research in robotics.</p>
-                </div>
-            </div>
-            <div class="timeline-item timeline-item-right" data-year="2023">
-                <div class="timeline-content"
-                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold">AICOR Institute Established (Phase II)</h3>
-                    <p class="text-white">Founded the AICOR Institute to ensure sustainability and drive innovation in AI-powered robotics.</p>
-                </div>
-            </div>
-            <!-- <div class="timeline-item timeline-item-left" data-year="2024">
-                <div class="timeline-content">
-                    <h3 class="text-primary">Assistive Robotics Milestone (Phase II)</h3>
-                    <p>Deployed assistive robots for elderly care and disability support, showcasing real-world impact.</p>
-                </div>
-            </div> -->
 
-            <!-- Phase 3 Goals -->
-            <div class="timeline-dot" data-year="2025"></div>
-            <div class="timeline-dot" data-year="2026"></div>
-            <div class="timeline-dot" data-year="2027"></div>
-            
+            <!-- Phase 3 Highlights -->
             <div class="timeline-item timeline-item-left" data-year="2025">
                 <div class="timeline-content"
-                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold"> Enhancing CRAM's Cognitive Capabilities (Phase III)</h3>
-                    <p class="text-white">To equip CRAM with advanced cognitive abilities to enable seamless human-robot interaction and co-construction.</p>
+                    data-bs-toggle="modal" data-bs-target="#phase3Modal"
+                    style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
+                    <h3 class="text-white fw-bold">Enhancing CRAM's Cognitive Capabilities (Phase III)</h3>
+                    <p class="text-white">Equipping CRAM with advanced cognitive abilities to enable seamless human-robot interaction and co-construction.</p>
                 </div>
             </div>
-            
-            <div class="timeline-item timeline-item-right" data-year="2026">
-                <div class="timeline-content"
-                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold">Data-Driven Everyday Activity Science and Engineering (Phase III)</h3>
-                    <p class="text-white">To leverage data-driven approaches to understand and model human behavior in everyday activities, informing the development of intelligent robot agents.</p>
-                </div>
-            </div>
+        </div>
+        <!-- Phase 1 Modal -->
+        <div class="modal fade" id="phase1Modal" tabindex="-1" aria-labelledby="phase1ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="phase1ModalLabel">Phase I: EASE CRC Initiation</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>The EASE CRC was initiated to focus on understanding and replicating human everyday activities in robotics. Key milestones include...</p>
+                        <!-- Add detailed content -->
+                        <div class="timeline">
+                            <!-- Phase 1 Highlights -->
+                            <div class="timeline-dot" data-year="2017"></div>
+                            <div class="timeline-dot" data-year="2018"></div>
+                            <div class="timeline-dot" data-year="2019"></div>
+                            <div class="timeline-dot" data-year="2020_"></div>
+                        
+                            <div class="timeline-item timeline-item-left" data-year="2017">
+                                <div class="timeline-content" 
+                                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">EASE CRC Initiation (Phase I)</h3>
+                                    <p class="text-white">Initiation of the EASE CRC, focusing on understanding and replicating human everyday activities in robotics.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item timeline-item-right" data-year="2018">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">CRAM-I Development (Phase I)</h3>
+                                    <p class="text-white">Developed the first version of the Cognitive Robot Abstract Machine (CRAM), enabling robots to perform complex manipulation tasks.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item timeline-item-left" data-year="2019">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">KnowRob2.0 Introduction (Phase I)</h3>
+                                    <p class="text-white">Introduced KnowRob2.0, an advanced knowledge representation and reasoning framework for robotic agents.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item timeline-item-right" data-year="2020">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">NEEM Hub Establishment (Phase I)</h3>
+                                    <p class="text-white">Established the NEEM Hub, a data storage system for Narrative-enabled Episodic Memories, facilitating knowledge extraction from robot experiences.</p>
+                                </div>
+                            </div>
+                        </div>
 
-            <div class="timeline-item timeline-item-left" data-year="2027">
-                <div class="timeline-content"
-                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <h3 class="text-white fw-bold">Co-Construction Capable Robot Agents (Phase III)</h3>
-                    <p class="text-white">To design and develop robot agents that can effectively collaborate with humans in various tasks, adapting to their needs and preferences.</p>
+                    </div>
                 </div>
             </div>
+        </div>
 
+        <!-- Phase 2 Modal -->
+        <div class="modal fade" id="phase2Modal" tabindex="-1" aria-labelledby="phase2ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="phase2ModalLabel">Phase II: Generative AI Integration</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>In this phase, generative AI techniques were integrated, enabling robots to predict, adapt, and improve task execution dynamically. This phase emphasized...</p>
+                        <!-- Add detailed content -->
+                        <div class="timeline">
+                            <!-- Phase 2 Highlights -->
+                            <div class="timeline-dot" data-year="2020"></div>
+                            <div class="timeline-dot" data-year="2021"></div>
+                            <div class="timeline-dot" data-year="2022"></div>
+                            <div class="timeline-dot" data-year="2023"></div>
+                        
+                            <div class="timeline-item timeline-item-left" data-year="2020">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">CRAM-II Architecture (Phase II)</h3>
+                                    <p class="text-white">Developed the Cognitive Robot Abstract Machine (CRAM-II), enabling advanced reasoning and action planning in everyday scenarios.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item timeline-item-right" data-year="2021">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">Generative AI Integration (Phase II)</h3>
+                                    <p class="text-white">Introduced generative AI techniques, allowing robots to predict, adapt, and improve task execution dynamically.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item timeline-item-left" data-year="2022">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">Virtual Research Building (VRB) (Phase II)</h3>
+                                    <p class="text-white">Launched the VRB, a digital twin environment for simulation, training, and collaborative research in robotics.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item timeline-item-right" data-year="2023">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">AICOR Institute Established (Phase II)</h3>
+                                    <p class="text-white">Founded the AICOR Institute to ensure sustainability and drive innovation in AI-powered robotics.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3 Modal -->
+        <div class="modal fade" id="phase3Modal" tabindex="-1" aria-labelledby="phase3ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="phase3ModalLabel">Phase III: Enhancing CRAM's Cognitive Capabilities</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>This phase focuses on equipping CRAM with advanced cognitive abilities to enable seamless human-robot interaction and co-construction. Goals include...</p>
+                        <!-- Add detailed content -->
+                        <div class="timeline">
+                            <!-- Phase 3 Goals -->
+                            <!-- <div class="timeline-dot" data-year="2025"></div>
+                            <div class="timeline-dot" data-year="2026"></div>
+                            <div class="timeline-dot" data-year="2027"></div> -->
+                            
+                            <div class="timeline-item timeline-item-left" data-year="2025">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold"> Enhancing CRAM's Cognitive Capabilities (Phase III)</h3>
+                                    <p class="text-white">To equip CRAM with advanced cognitive abilities to enable seamless human-robot interaction and co-construction.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item timeline-item-right" data-year="2026">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">Data-Driven Everyday Activity Science and Engineering (Phase III)</h3>
+                                    <p class="text-white">To leverage data-driven approaches to understand and model human behavior in everyday activities, informing the development of intelligent robot agents.</p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item timeline-item-left" data-year="2027">
+                                <div class="timeline-content"
+                                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <h3 class="text-white fw-bold">Co-Construction Capable Robot Agents (Phase III)</h3>
+                                    <p class="text-white">To design and develop robot agents that can effectively collaborate with humans in various tasks, adapting to their needs and preferences.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Case Studies -->
     <div class="container my-5">
-        <h1 class="text-center mb-5" style="color: rgba(0, 51, 102, 1);">Case Studies</h1>
+        <h1 class="text-center mb-5 text-white fw-bold">Case Studies</h1>
         <div class="row g-4">
             <!-- Tile 1 -->
             <div class="col-md-4">

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Highlights Timeline</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/tutorials/timelines/timeline-4/assets/css/timeline-4.css">
+    <!-- Include FontAwesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/boot.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .timeline {
+            position: relative;
+            margin: 50px 0;
+            padding: 10px 0;
+            /* max-height: 50vh; */
+            /* max-width: 50%; */
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: #007bff;
+        }
+        .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            width: 52%;
+        }
+        .timeline-item-left {
+            left: 0;
+            text-align: right;
+            padding-right: 10%;
+        }
+        .timeline-item-right {
+            left: 48%;
+            text-align: left;
+            padding-left: 10%;
+        }
+        .timeline-item::before {
+            content: attr(data-year);
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 2;
+        }
+        .timeline-item::after {
+            content: '\f017'; /* FontAwesome clock icon */
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: #007bff;
+            font-size: 20px;
+        }
+        .timeline-content {
+            position: relative;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+        .timeline-item-left .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .timeline-item-right .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        .timeline-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            color: #007bff;
+        }
+        .timeline-content p {
+            font-size: 1rem;
+        }
+        /* Dots on timeline line */
+        .timeline-dot{
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 15px;
+            height: 15px;
+            background-color: #007bff;
+            border: 3px solid white;
+            border-radius: 50%;
+            z-index: 3;
+        }
+        /* .timeline-item[data-year="2017"]::after {
+            content: '';
+            top: 5%;
+        } */
+        .timeline-dot[data-year="2017"] {
+            top: 5%;
+        }
+        .timeline-dot[data-year="2018"] {
+            top: 14%;
+        }
+        .timeline-dot[data-year="2019"] {
+            top: 22%;
+        }
+        .timeline-dot[data-year="2020_"] {
+            top: 32%;
+        }
+        .timeline-dot[data-year="2020"] {
+            top: 40%;
+        }
+        .timeline-dot[data-year="2021"] {
+            top: 50%;
+        }
+        .timeline-dot[data-year="2022"] {
+            top: 58%;
+        }
+        .timeline-dot[data-year="2023"] {
+            top: 67%;
+        }
+        .timeline-dot[data-year="2025"] {
+            top: 75%;
+        }
+        .timeline-dot[data-year="2026"] {
+            top: 85%;
+        }
+        .timeline-dot[data-year="2027"] {
+            top: 95%;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline-item {
+                width: 100%;
+                text-align: center;
+                padding: 0;
+            }
+            .timeline-item-left, .timeline-item-right {
+                left: 0;
+            }
+            .timeline-content {
+                margin: auto;
+            }
+            .timeline-item::before {
+                top: -10px;
+            }
+            .timeline-item::after {
+                display: none;
+            }
+        }
+
+        .tile {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #008080, #20B2AA); /* Tile background */
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        color: white;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        height: 170px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .tile:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .tile-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    .tile-content {
+        padding: 20px;
+        text-align: center;
+        overflow: hidden;
+    }
+    .tile p {
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .modal-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    .modal-xl {
+        max-width: 70%;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="text-center py-2" style="background: linear-gradient(to top, rgba(255, 255, 255,0), rgba(0, 0, 0, 0.8));  overflow: hidden;"">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-around">
+            <!-- Left Logo -->
+            <img src="../images/EASE_logo.png" alt="Left Image" class="img-fluid" style="max-width: 250px; height: auto;">
+    
+            <!-- Header Text -->
+            <div>
+                <h1 class="display-4 text-white" style="font-weight: 700;">EASE Virtual Research Building</h1>
+                <p class="lead text-white" style="font-size: 1.2rem;">Driving Collaboration, Innovation, and Accessibility in AI and Robotics</p>
+            </div>
+    
+            <!-- Right Logo -->
+            <img src="../images/Logo - IAI Schrift.png" alt="Right Image" class="img-fluid" style="max-width: 250px; height: auto;">
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-md">
+        <div class="container" style="background-color: rgba(0, 51, 102, 0.9); border-radius: 8px; padding: 0.5rem 1rem;">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="color: #FFFFFF;"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a href="../home.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Home</a></li>
+                    <li class="nav-item"><a href="aboutVRB.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">About VRB</a></li>
+                    <li class="nav-item"><a href="Research.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Research Highlights</a></li>
+                    <li class="nav-item"><a href="Collaboration.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Collaborate</a></li>
+                    <li class="nav-item"><a href="Resources.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Resources</a></li>
+                    <li class="nav-item"><a href="Education.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Education</a></li>
+                    <!-- <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">ViB</a></li> -->
+                    <li class="nav-item"><a href="competition.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Competition</a></li>
+                    <li class="nav-item"><a href="Contact.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Contact</a></li>
+                    <!-- <li class="nav-item"><a href="testing.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Testing</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Timeline -->
+    <div class="container my-5">
+        <header class="text-center mt-5">
+            <h1 style="color: rgba(0, 51, 102, 1);">Research Timeline</h1>
+            <p class="text-muted">Explore the milestones and achievements of EASE</p>
+        </header>
+
+        <div class="timeline">
+            <!-- Phase 1 Highlights -->
+            <div class="timeline-dot" data-year="2017"></div>
+            <div class="timeline-dot" data-year="2018"></div>
+            <div class="timeline-dot" data-year="2019"></div>
+            <div class="timeline-dot" data-year="2020_"></div>
+        
+            <div class="timeline-item timeline-item-left" data-year="2017">
+                <div class="timeline-content" 
+                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">EASE CRC Initiation (Phase I)</h3>
+                    <p class="text-white">Initiation of the EASE CRC, focusing on understanding and replicating human everyday activities in robotics.</p>
+                </div>
+            </div>
+            <div class="timeline-item timeline-item-right" data-year="2018">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">CRAM-I Development (Phase I)</h3>
+                    <p class="text-white">Developed the first version of the Cognitive Robot Abstract Machine (CRAM), enabling robots to perform complex manipulation tasks.</p>
+                </div>
+            </div>
+            <div class="timeline-item timeline-item-left" data-year="2019">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">KnowRob2.0 Introduction (Phase I)</h3>
+                    <p class="text-white">Introduced KnowRob2.0, an advanced knowledge representation and reasoning framework for robotic agents.</p>
+                </div>
+            </div>
+            <div class="timeline-item timeline-item-right" data-year="2020">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">NEEM Hub Establishment (Phase I)</h3>
+                    <p class="text-white">Established the NEEM Hub, a data storage system for Narrative-enabled Episodic Memories, facilitating knowledge extraction from robot experiences.</p>
+                </div>
+            </div>
+        
+            <!-- Phase 2 Highlights -->
+            <div class="timeline-dot" data-year="2020"></div>
+            <div class="timeline-dot" data-year="2021"></div>
+            <div class="timeline-dot" data-year="2022"></div>
+            <div class="timeline-dot" data-year="2023"></div>
+        
+            <div class="timeline-item timeline-item-left" data-year="2020">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">CRAM-II Architecture (Phase II)</h3>
+                    <p class="text-white">Developed the Cognitive Robot Abstract Machine (CRAM-II), enabling advanced reasoning and action planning in everyday scenarios.</p>
+                </div>
+            </div>
+            <div class="timeline-item timeline-item-right" data-year="2021">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">Generative AI Integration (Phase II)</h3>
+                    <p class="text-white">Introduced generative AI techniques, allowing robots to predict, adapt, and improve task execution dynamically.</p>
+                </div>
+            </div>
+            <div class="timeline-item timeline-item-left" data-year="2022">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">Virtual Research Building (VRB) (Phase II)</h3>
+                    <p class="text-white">Launched the VRB, a digital twin environment for simulation, training, and collaborative research in robotics.</p>
+                </div>
+            </div>
+            <div class="timeline-item timeline-item-right" data-year="2023">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">AICOR Institute Established (Phase II)</h3>
+                    <p class="text-white">Founded the AICOR Institute to ensure sustainability and drive innovation in AI-powered robotics.</p>
+                </div>
+            </div>
+            <!-- <div class="timeline-item timeline-item-left" data-year="2024">
+                <div class="timeline-content">
+                    <h3 class="text-primary">Assistive Robotics Milestone (Phase II)</h3>
+                    <p>Deployed assistive robots for elderly care and disability support, showcasing real-world impact.</p>
+                </div>
+            </div> -->
+
+            <!-- Phase 3 Goals -->
+            <div class="timeline-dot" data-year="2025"></div>
+            <div class="timeline-dot" data-year="2026"></div>
+            <div class="timeline-dot" data-year="2027"></div>
+            
+            <div class="timeline-item timeline-item-left" data-year="2025">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold"> Enhancing CRAM's Cognitive Capabilities (Phase III)</h3>
+                    <p class="text-white">To equip CRAM with advanced cognitive abilities to enable seamless human-robot interaction and co-construction.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item timeline-item-right" data-year="2026">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">Data-Driven Everyday Activity Science and Engineering (Phase III)</h3>
+                    <p class="text-white">To leverage data-driven approaches to understand and model human behavior in everyday activities, informing the development of intelligent robot agents.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item timeline-item-left" data-year="2027">
+                <div class="timeline-content"
+                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <h3 class="text-white fw-bold">Co-Construction Capable Robot Agents (Phase III)</h3>
+                    <p class="text-white">To design and develop robot agents that can effectively collaborate with humans in various tasks, adapting to their needs and preferences.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Case Studies -->
+    <div class="container my-5">
+        <h1 class="text-center mb-5" style="color: rgba(0, 51, 102, 1);">Case Studies</h1>
+        <div class="row g-4">
+            <!-- Tile 1 -->
+            <div class="col-md-4">
+                <div class="tile p-3" data-bs-toggle="modal" data-bs-target="#caseStudy1">
+                    <div class="tile-content">
+                        <div class="tile-header">Maria and Her Robot Assistant</div>
+                        <p>A robot assists Maria in recovering from an...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal 1 -->
+            <div class="modal fade" id="caseStudy1" tabindex="-1" aria-labelledby="caseStudy1Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="caseStudy1Label">Maria and Her Robot Assistant</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p> Maria, a retired teacher recovering from an ankle injury, uses a robot that assists in daily tasks. The robot adapts to her preferences in real-time and improves based on feedback.</p>
+                            <br>
+                            <p> Robot: Good morning, Maria. I've prepared your coffee station. Your mug, sugar, and milk are ready for you. </p>
+                            <p> Maria: Thank you. That's very helpful.</p>
+                            <img src="../images/maria1.png" alt="Maria and Robot">
+
+                            <p> Maria: I'd like to work on my bonsai garden today. Can you assist me with that?</p>
+
+                            <p> Robot: Certainly, Maria. What kind of style are you aiming for?</p>
+
+                            <p> Maria: I prefer a more natural look.</p> 
+
+                            <p> Robot: Understood. I'll adjust my techniques accordingly. Please let me know if you'd like to make any adjustments.</p>
+
+                            <p> Maria: It looks a bit too symmetrical.</p>
+
+                            <p> Robot: You're right. I'll focus on creating a more asymmetrical and organic shape. Perhaps we could add some interesting twists and turns to the branches?</p>
+
+                            <p> Maria: That sounds good.</p>
+
+                            <p> Robot: Shall we start with this bonsai here?</p>
+
+                            <p> Maria: Yes, please.</p>
+                            <img src="../images/maria2.png" alt="Maria and Robot">
+                            
+                            <p> Robot: Let's prepare lunch now. I can fetch the ingredients and do the chopping. You can focus on the mixing and seasoning.</p>
+
+                            <p> Maria: That would be great, thank you.</p>
+
+                            <p> Robot: Dinner is ready. How was your day?</p>
+
+                            <p> Maria: It was a good day. Thank you for your help.</p>
+
+                            <p> Robot: I'm glad I could assist you. I've taken note of your feedback on the bonsai styling. I've also found some interesting techniques online that you might enjoy. Would you like to explore them tomorrow?</p>
+                            <img src="../images/maria3.png" alt="Maria and Robot">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tile 2 -->
+            <div class="col-md-4">
+                <div class="tile p-3" data-bs-toggle="modal" data-bs-target="#caseStudy2">
+                    <div class="tile-content">
+                        <div class="tile-header">Assistive Robots in Elderly Care</div>
+                        <p>Robots deployed to assist the elderly...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal 2 -->
+            <div class="modal fade" id="caseStudy2" tabindex="-1" aria-labelledby="caseStudy2Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="caseStudy2Label">Assistive Robots in Elderly Care</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Robots assist elderly individuals with tasks like mobility support, meal preparation, and light housekeeping. These robots reduce caregiver burdens and demonstrate the real-world impact of EASE research.</p>
+                            <p> Mrs. Clara, an 82-year-old woman with limited mobility, lives in an assisted living home. She recently started using a robotic assistant named "CompanionBot", designed to help with daily tasks and provide companionship.</p>
+                            <img src="../images/Unbenanntes_Projekt 26.jpg" alt="Clara and Robot">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tile 3 -->
+            <div class="col-md-4">
+                <div class="tile p-3" data-bs-toggle="modal" data-bs-target="#caseStudy3">
+                    <div class="tile-content">
+                        <div class="tile-header">Virtual Research Building</div>
+                        <p>Simulations and virtual labs revolutionize research...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal 3 -->
+            <div class="modal fade" id="caseStudy3" tabindex="-1" aria-labelledby="caseStudy3Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="caseStudy3Label">Virtual Research Building</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Left Column: Text Content -->
+                                    <div class="col-md-7">
+                                        <p>The <strong>VRB</strong> provides access to virtual labs for collaborative experimentation, reducing costs and promoting reproducibility. It accelerates research by enabling simulations for tasks like meal prep and household activities.</p>
+                                        <h5 class="fw-bold">Virtual Research Building (VRB) Highlights</h5>
+                                        <br>
+                                        <p><strong>Digital Twin Environment:</strong> Simulates and tests robotics tasks in a controlled virtual space.</p>
+                                        <p><strong>Collaborative Platform:</strong> Enables interdisciplinary and global research collaboration through VRLs.</p>
+                                        <p><strong>Education and Training:</strong> Supports tutorials and immersive learning for students and researchers.</p>
+                                        <p><strong>Open Science:</strong> Promotes transparency and reproducibility via openEASE integration.</p>
+                                        <p><strong>Task Validation:</strong> Tests robotic tasks like object manipulation and pouring before physical deployment.</p>
+                                        <p><strong>Cost-Effective Innovation:</strong> Reduces risks and costs of experimentation.</p>
+                                        <p><strong>Industrial Impact:</strong> Fosters partnerships, accelerates innovation, and lowers entry barriers for businesses.</p>
+                                        <img src="../images/Weltkugel.jpg" alt="Manipulation" class="img-fluid" style="max-width: 70%; height: auto;">
+                                    </div>
+                                    <!-- Right Column: Images -->
+                                    <div class="col-md-5">
+                                        <img src="../images/ViB_webseite_3.png" alt="Learning" class="img-fluid mb-4">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Add more tiles and modals as needed -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2024 EASE Virtual Research Building
+    </footer>
+</body>
+</html>
