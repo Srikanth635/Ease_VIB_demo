@@ -98,6 +98,8 @@
         }
         .timeline-content:hover {
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         .timeline-item-left .timeline-content {
             margin-left: auto;
@@ -180,6 +182,38 @@
             }
         }
 
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            /* width: 500px;
+            height: auto; */
+            border: 1px solid #e0e0e0;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-header {
+            padding: 15px;
+            text-align: center;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        .text-white {
+            color: #ffffff;
+        }
+        .fw-bold {
+            font-weight: bold;
+        }
+
     .tile {
         position: relative;
         overflow: hidden;
@@ -220,7 +254,7 @@
             margin-bottom: 20px;
         }
     .modal-xl {
-        max-width: 70%;
+        max-width: 90%;
     }
     </style>
 </head>
@@ -277,8 +311,9 @@
                 <div class="timeline-content"
                     data-bs-toggle="modal" data-bs-target="#phase1Modal"
                     style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
-                    <h3 class="text-white fw-bold">EASE CRC Initiation (Phase I)</h3>
-                    <p class="text-white">Initiation of the EASE CRC, focusing on understanding and replicating human everyday activities in robotics.</p>
+                    <h3 class="text-white fw-bold">Foundational Research (Phase I)</h3>
+                    <p class="text-white">EASE CRC Initiation and focus on discovering early milestones in robotics research.</p>
+                    <p class="text-white">2017-2021</p>                 
                 </div>
             </div>
 
@@ -287,8 +322,9 @@
                 <div class="timeline-content"
                     data-bs-toggle="modal" data-bs-target="#phase2Modal"
                     style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
-                    <h3 class="text-white fw-bold">Generative AI Integration (Phase II)</h3>
-                    <p class="text-white">Introduced generative AI techniques, allowing robots to predict, adapt, and improve task execution dynamically.</p>
+                    <h3 class="text-white fw-bold">Rational Reconstruction (Phase II)</h3>
+                    <p class="text-white">Explore advancements in robot cognitive capabilities.</p>
+                    <p class="text-white">2021-2025</p>         
                 </div>
             </div>
 
@@ -297,159 +333,260 @@
                 <div class="timeline-content"
                     data-bs-toggle="modal" data-bs-target="#phase3Modal"
                     style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); cursor: pointer;">
-                    <h3 class="text-white fw-bold">Enhancing CRAM's Cognitive Capabilities (Phase III)</h3>
-                    <p class="text-white">Equipping CRAM with advanced cognitive abilities to enable seamless human-robot interaction and co-construction.</p>
+                    <h3 class="text-white fw-bold">Co-Construction (Phase III)</h3>
+                    <p class="text-white">Learn about the integration of robots and humans in co-construction tasks.</p>
+                    <p class="text-white">2025-2028</p>
+                    <!-- <a href="https://ease-crc.org/wp-content/uploads/2018/12/ease.pdf" class="btn w-30 callaction" target="_blank"> Learn More </a> -->
                 </div>
             </div>
         </div>
         <!-- Phase 1 Modal -->
         <div class="modal fade" id="phase1Modal" tabindex="-1" aria-labelledby="phase1ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="phase1ModalLabel">Phase I: EASE CRC Initiation</h5>
+                        <h5 class="modal-title" id="phase1ModalLabel">Phase I: Foundational Research</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+
                     <div class="modal-body">
                         <p>The EASE CRC was initiated to focus on understanding and replicating human everyday activities in robotics. Key milestones include...</p>
-                        <!-- Add detailed content -->
-                        <div class="timeline">
-                            <!-- Phase 1 Highlights -->
-                            <div class="timeline-dot" data-year="2017"></div>
-                            <div class="timeline-dot" data-year="2018"></div>
-                            <div class="timeline-dot" data-year="2019"></div>
-                            <div class="timeline-dot" data-year="2020_"></div>
-                        
-                            <div class="timeline-item timeline-item-left" data-year="2017">
-                                <div class="timeline-content" 
-                                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">EASE CRC Initiation (Phase I)</h3>
-                                    <p class="text-white">Initiation of the EASE CRC, focusing on understanding and replicating human everyday activities in robotics.</p>
+                        <div class="grid-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;">
+                            <!-- Card for CRAM's Action Plan Generalization -->
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #008080, #20B2AA);">
+                                    <h4 class="text-white fw-bold">CRAM's Action Plan Generalization</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Proposed and developed a novel generative model enabling a robot to master everyday activities through a single, compact, generalized action plan for fetch-and-place tasks.</p>
+                                    <div class="image-container" style="height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/results/kr1_1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">Different object grasps selected by the generative model based on the object, task, and context.</p>
                                 </div>
                             </div>
-                            <div class="timeline-item timeline-item-right" data-year="2018">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">CRAM-I Development (Phase I)</h3>
-                                    <p class="text-white">Developed the first version of the Cognitive Robot Abstract Machine (CRAM), enabling robots to perform complex manipulation tasks.</p>
+                            <!-- Additional cards -->
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #008080, #20B2AA);">
+                                    <h4 class="text-white fw-bold">KnowRob2.0 Introduction</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Introduced KnowRob2.0, an advanced knowledge representation and reasoning framework for robotic agents.</p>
+                                    <div class="image-container" style="height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/results/kr2_1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">KnowRob2.0 Architecture.</p>
                                 </div>
                             </div>
-                            <div class="timeline-item timeline-item-left" data-year="2019">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">KnowRob2.0 Introduction (Phase I)</h3>
-                                    <p class="text-white">Introduced KnowRob2.0, an advanced knowledge representation and reasoning framework for robotic agents.</p>
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #008080, #20B2AA);">
+                                    <h4 class="text-white fw-bold">Ontology Integration</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Developed and utilized the SOMA (Socio-physical Model of Activities) ontology for robot reasoning. Enabled robots to apply commonsense and intuitive physics knowledge.</p>
+                                    <div class="image-container" style="height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/results/SOMA.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">Representation of the physical and computational processes and representation involved in the
+                                        execution of actions in the SOMA ontology</p>
                                 </div>
                             </div>
-                            <div class="timeline-item timeline-item-right" data-year="2020">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #008080, #20B2AA); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">NEEM Hub Establishment (Phase I)</h3>
-                                    <p class="text-white">Established the NEEM Hub, a data storage system for Narrative-enabled Episodic Memories, facilitating knowledge extraction from robot experiences.</p>
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #008080, #20B2AA);">
+                                    <h4 class="text-white fw-bold">NEEM Hub Establishment</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Established the NEEM Hub, a data storage system for Narrative-enabled Episodic Memories, facilitating knowledge extraction from robot experiences.</p>
+                                    <div class="image-container" style="height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/results/neem_hub.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">NEEM-HUB (for
+                                        acquiring, curating, and publishing NEEMs)</p>
+                                </div>
+                            </div>
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #008080, #20B2AA);">
+                                    <h4 class="text-white fw-bold">Automated Modelling of Human Activity</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Developed AMEVA (Automated Models of Everyday Activities), a
+                                        computer system that can observe, interpret, and record fetch-and-place tasks and automatically abstract
+                                         the observed activities into action models according to Flanagan model, and represent
+                                        these models as NEEMs.</p>
+                                    <div class="image-container" style="height: 300px; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/results/NEEM_vr.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">Collecting NEEMs from human demonstration</p>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="text-center" style="margin-top: 20px;">
+                            <a href="https://ease-crc.org/wp-content/uploads/2018/12/ease.pdf" class="btn w-30 callaction" target="_blank">Phase 1 Proposal</a>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
 
         <!-- Phase 2 Modal -->
         <div class="modal fade" id="phase2Modal" tabindex="-1" aria-labelledby="phase2ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="phase2ModalLabel">Phase II: Generative AI Integration</h5>
+                        <h5 class="modal-title" id="phase2ModalLabel">Phase II: Rational Reconstruction</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    
                     <div class="modal-body">
-                        <p>In this phase, generative AI techniques were integrated, enabling robots to predict, adapt, and improve task execution dynamically. This phase emphasized...</p>
-                        <!-- Add detailed content -->
-                        <div class="timeline">
-                            <!-- Phase 2 Highlights -->
-                            <div class="timeline-dot" data-year="2020"></div>
-                            <div class="timeline-dot" data-year="2021"></div>
-                            <div class="timeline-dot" data-year="2022"></div>
-                            <div class="timeline-dot" data-year="2023"></div>
-                        
-                            <div class="timeline-item timeline-item-left" data-year="2020">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">CRAM-II Architecture (Phase II)</h3>
-                                    <p class="text-white">Developed the Cognitive Robot Abstract Machine (CRAM-II), enabling advanced reasoning and action planning in everyday scenarios.</p>
+                        <p>In this phase, cognitive architectures for robot agents were investigated and accomplised everyday manipulation tasks by designing, realizing, and 
+                            studying CRAM2.0. This phase emphasized...</p>
+                        <div class="grid-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;">
+                            <!-- Card for 2020 -->
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #FF5733, #FF8C42);">
+                                    <h4 class="text-white fw-bold">CRAM-II</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h4 class="fw-bold">CRAM-II Architecture</h4> -->
+                                    <p>Developed the Cognitive Robot Abstract Machine (CRAM-II), enabling advanced reasoning and action planning in everyday scenarios.</p>
+                                    <div class="image-container bg-transparent" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/results/cram2_arc.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">CRAM-II Architecture</p>
                                 </div>
                             </div>
-                            <div class="timeline-item timeline-item-right" data-year="2021">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">Generative AI Integration (Phase II)</h3>
-                                    <p class="text-white">Introduced generative AI techniques, allowing robots to predict, adapt, and improve task execution dynamically.</p>
+                            <!-- Card for 2021 -->
+                            <!-- <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #FF5733, #FF8C42);">
+                                    <h4 class="text-white fw-bold">Generative AI Integration</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Introduced generative AI techniques, allowing robots to predict, adapt, and improve task execution dynamically.</p>
+                                    <div class="image-container bg-transparent" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/results/kr1_1.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- Card for 2022 -->
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #FF5733, #FF8C42);">
+                                    <h4 class="text-white fw-bold">Virtual Research Building (VRB)</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h4 class="fw-bold"></h4> -->
+                                    <p>Launched the VRB, a digital twin environment for simulation, training, and collaborative research in robotics.
+                                        Opened research access through the OPENEASE platform for sharing datasets and tools.
+                                    </p>
+                                    <div class="image-container bg-transparent" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/ViB_webseite_3.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">Virtual Research Building</p>
                                 </div>
                             </div>
-                            <div class="timeline-item timeline-item-left" data-year="2022">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">Virtual Research Building (VRB) (Phase II)</h3>
-                                    <p class="text-white">Launched the VRB, a digital twin environment for simulation, training, and collaborative research in robotics.</p>
+                            <!-- Card for 2023 -->
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #FF5733, #FF8C42);">
+                                    <h4 class="text-white fw-bold">Educational Impact</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h4 class="fw-bold"></h4> -->
+                                    <p>Published an interactive textbook on AI-powered and cognition-enabled robotics (AICOR).
+                                        Developed educational resources with immersive learning environments to train future robotics experts.
+                                    </p>
+                                    <div class="image-container bg-transparent" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/retail_industry.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">Different object grasps selected by the generative model based on the object, task, and context.</p>
                                 </div>
                             </div>
-                            <div class="timeline-item timeline-item-right" data-year="2023">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #FF5733, #FF8C42); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">AICOR Institute Established (Phase II)</h3>
-                                    <p class="text-white">Founded the AICOR Institute to ensure sustainability and drive innovation in AI-powered robotics.</p>
+                            <!-- Card for 2023 Economic and Industrial Progress -->
+                            <div class="card" style="flex: 0 0 48%; box-sizing: border-box;">
+                                <div class="card-header" style="background: linear-gradient(135deg, #FF5733, #FF8C42);">
+                                    <h4 class="text-white fw-bold">Economic and Industrial Impact</h4>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h4 class="fw-bold"></h4> -->
+                                    <p>Facilitated knowledge transfer to industry, influencing the development of commercial robotics systems.
+                                        Collaborated with industrial partners (UBICA, ArtiMinds) to integrate CRAM & KNOWROB into practical applications.
+                                    </p>
+                                    <div class="image-container bg-transparent" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/retail_industry.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <!-- <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">Different object grasps selected by the generative model based on the object, task, and context.</p> -->
                                 </div>
                             </div>
                         </div>
-
+                        <div class="text-center" style="margin-top: 20px;">
+                            <a href="https://ease-crc.org/wp-content/uploads/2023/07/Phase-2.pdf" class="btn w-30 callaction" target="_blank"> Phase 2 Proposal </a>
+                        </div>
                     </div>
+                    
+
                 </div>
             </div>
         </div>
 
         <!-- Phase 3 Modal -->
         <div class="modal fade" id="phase3Modal" tabindex="-1" aria-labelledby="phase3ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="phase3ModalLabel">Phase III: Enhancing CRAM's Cognitive Capabilities</h5>
+                        <h5 class="modal-title" id="phase3ModalLabel">Phase III: Co-Construction</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <p>This phase focuses on equipping CRAM with advanced cognitive abilities to enable seamless human-robot interaction and co-construction. Goals include...</p>
-                        <!-- Add detailed content -->
-                        <div class="timeline">
-                            <!-- Phase 3 Goals -->
-                            <!-- <div class="timeline-dot" data-year="2025"></div>
-                            <div class="timeline-dot" data-year="2026"></div>
-                            <div class="timeline-dot" data-year="2027"></div> -->
-                            
-                            <div class="timeline-item timeline-item-left" data-year="2025">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold"> Enhancing CRAM's Cognitive Capabilities (Phase III)</h3>
-                                    <p class="text-white">To equip CRAM with advanced cognitive abilities to enable seamless human-robot interaction and co-construction.</p>
+                        <div class="grid-container">
+                            <!-- Card for 2025 -->
+                            <div class="card">
+                                <div class="card-header" style="background: linear-gradient(135deg, #5A3F8A, #6F52A6);">
+                                    <h3 class="text-white fw-bold">GenAI-powered CRAM</h3>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h4 class="fw-bold">GenAI-powered CRAM</h4> -->
+                                    <p>Combining large language
+                                        models (LLMs) with the representational structures and processes of the CRAM cognitive architecture and enhancing the robot’s reasoning,
+                                        adaptability, and execution capabilities.</p>
+                                    <div class="image-container bg-transparent" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/genAI_CRAM.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">GenAI vs CRAM-informed GenAI</p>
                                 </div>
                             </div>
-                            
-                            <div class="timeline-item timeline-item-right" data-year="2026">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">Data-Driven Everyday Activity Science and Engineering (Phase III)</h3>
-                                    <p class="text-white">To leverage data-driven approaches to understand and model human behavior in everyday activities, informing the development of intelligent robot agents.</p>
+                            <!-- Card for 2026 -->
+                            <div class="card">
+                                <div class="card-header" style="background: linear-gradient(135deg, #5A3F8A, #6F52A6);">
+                                    <h3 class="text-white fw-bold">Co-construction-capable Robot Agents</h3>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h4 class="fw-bold">Co-construction-capable Robot Agents</h4> -->
+                                    <p>
+                                        Designing and develop robot agents that can effectively collaborate with humans in various tasks, adapting to their needs and preferences.
+                                    </p>
+                                    <div class="image-container bg-transparent" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/robot_abhijit.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">Human and Robot Working Together</p>
                                 </div>
                             </div>
-
-                            <div class="timeline-item timeline-item-left" data-year="2027">
-                                <div class="timeline-content"
-                                style="background: linear-gradient(135deg, #5A3F8A, #6F52A6); border-radius: 15px; overflow: hidden; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                                    <h3 class="text-white fw-bold">Co-Construction Capable Robot Agents (Phase III)</h3>
-                                    <p class="text-white">To design and develop robot agents that can effectively collaborate with humans in various tasks, adapting to their needs and preferences.</p>
+                            <!-- Card for 2027 -->
+                            <div class="card">
+                                <div class="card-header" style="background: linear-gradient(135deg, #5A3F8A, #6F52A6);">
+                                    <h3 class="text-white fw-bold">Empowering Robot Agents</h3>
+                                </div>
+                                <div class="card-body">
+                                    <!-- <h4 class="fw-bold">Empowering Robot Agents</h4> -->
+                                    <p>Leveraging data-driven approaches to understand and model human behavior in everyday activities and advancing robot platforms to assist humans 
+                                    in everyday activities through co-construction, interactive learning and advanced task execution. Also enabling humans to seamlessly integrate robots into daily tasks.
+                                    </p>
+                                    <div class="image-container bg-transparent" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/conconstruction.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                                    <p class="image-description text-muted" style="margin-top: 10px; text-align: center;">Co-construction Capable Robot Agents</p>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
