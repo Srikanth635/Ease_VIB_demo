@@ -7,6 +7,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/boot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .resource-card {
             transition: transform 0.3s ease;
@@ -170,34 +173,30 @@
             </div>
         </section>
         <section class="container my-5">
-            <h2 class="text-center mb-4 text-white">Publications</h2>
-            <div class="search-section">
-                <h5>Search Publications</h5>
-                <form>
-                    <div class="row g-2">
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Search by Title" />
-                        </div>
-                        <div class="col-md-4">
-                            <select class="form-select">
-                                <option value="">Filter by Topic</option>
-                                <option value="cognitive-robotics">Cognitive Robotics</option>
-                                <option value="navigation">Autonomous Navigation</option>
-                                <option value="manipulation">Manipulation</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <select class="form-select">
-                                <option value="">Filter by Funding Phase</option>
-                                <option value="phase-1">Phase 1</option>
-                                <option value="phase-2">Phase 2</option>
-                                <option value="phase-3">Phase 3</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-3">Search</button>
-                </form>
+            
+            <div class="container mt-4 d-flex flex-column align-items-center justify-content-center">
+                <h1 class="text-white text-center mb-4">Publications</h1>
+                <div class="text-center position-relative" style="width: 200px;">
+                    <select id="year-filter" class="form-control pr-5">
+                        <option value="" selected>Select Year</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="all">All Years</option>
+                    </select>
+                    <i class="fas fa-caret-down position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none;"></i>
+                </div>
             </div>
+            
+        
+            <div id="publications-container" class="container mt-4 bg-light" style="border-radius: 15px;">
+                <!-- Filtered publications will be displayed here -->
+            </div>
+
         </section>
     </div>
     <footer class="bg-dark text-white text-center py-3">
@@ -205,5 +204,734 @@
     </footer>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const publications = {
+                2020: {
+                    journal: [
+                        {
+                            title: "Manipulation Planning and Control for Shelf Replenishment",
+                            authors: "Costanzo, Marco, Stelter, Simon, Natale, Ciro, Pirozzi, Salvatore, Bartels, Georg, Maldonado, Alexis, and Beetz, Michael",
+                            venue: "IEEE Robotics and Automation Letters",
+                            volume: "5",
+                            issue: "2",
+                            pages: "1595–1601",
+                            publisher: "IEEE",
+                            link: ""
+                        },
+                        {
+                            title: "SkillMaN – A skill-based robotic manipulation framework based on perception and reasoning",
+                            authors: "Diab, Mohammed, Pomarlan, Mihai, Beßler, Daniel, Akbari, Aliakbar, Rosell, Jan, Bateman, John, and Beetz, Michael",
+                            venue: "Robotics and Autonomous Systems",
+                            volume: "134",
+                            pages: "103653",
+                            publisher: "Elsevier",
+                            link: ""
+                        }
+                    ],
+                    conference: [
+                        {
+                            title: "A Formal Model of Affordances for Flexible Robotic Task Execution",
+                            authors: "Beßler, Daniel, Porzel, Robert, Pomarlan, Mihai, Beetz, Michael, Malaka, Rainer, and Bateman, John",
+                            venue: "Proc. of the 24th European Conference on Artificial Intelligence (ECAI)",
+                            link: "https://ai.uni-bremen.de/papers/bessler20affordances.pdf"
+                        },
+                        {
+                            title: "Towards Plan Transformations for Real-World Mobile Fetch and Place",
+                            authors: "Gayane Kazhoyan, Arthur Niedzwiecki, and Michael Beetz",
+                            venue: "IEEE International Conference on Robotics and Automation (ICRA)",
+                            link: "https://doi.org/10.1109/ICRA40945.2020.9197446"
+                        },
+                        {
+                            title: "Learning Motion Parameterizations of Mobile Pick and Place Actions from Observing Humans in Virtual Environments",
+                            authors: "Gayane Kazhoyan, Alina Hawkin, Sebastian Koralewski, Andrei Haidu, and Michael Beetz",
+                            venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+                            link: "https://doi.org/10.1109/IROS45743.2020.9341458"
+                        },
+                        {
+                            title: "RobotVQA — A Scene-Graph- and Deep-Learning-based Visual Question Answering System for Robot Manipulation",
+                            authors: "Franklin Kenghagho Kenfack, Feroz Ahmed Siddiky, Ferenc Balint-Benczedi, and Michael Beetz",
+                            venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+                            location: "Las Vegas, USA",
+                            link: "https://www.researchgate.net/publication/344953602_RobotVQA_-A_Scene-Graph-and_Deep-Learning-based_Visual_Question_Answering_System_for_Robot_Manipulation"
+                        },
+                        {
+                            title: "Optimality and Space in Weakly Constrained Everyday Activities",
+                            authors: "Wenzl, Petra, and Schultheis, Holger",
+                            venue: "Proceedings of the 42nd Annual Conference of the Cognitive Science Society",
+                            pages: "1866–1872",
+                            publisher: "Cognitive Science Society",
+                            link: ""
+                        }
+                    ],
+                    workshop: [
+                        {
+                            title: "Using Linked Data to Help Robots Understand Product-related Actions",
+                            authors: "Kümpel, Michaela, de Groot, Anna, Tiddi, Ilaria, and Beetz, Michael",
+                            venue: "JOWO 2020, The Joint Ontology Workshops",
+                            volume: "2708",
+                            link: "http://ceur-ws.org/Vol-2708/robontics2.pdf"
+                        }
+                    ],
+                    other: [
+                        {
+                            title: "Task Adaptable, Pervasive Perception for Robots Performing Everyday Manipulation",
+                            authors: "Ferenc Balint-Benczedi",
+                            type: "PhD thesis",
+                            institution: "University of Bremen",
+                            link: "http://nbn-resolving.de/urn:nbn:de:gbv:46-00108604-10"
+                        },
+                        {
+                            title: "Foundations of the Socio-physical Model of Activities (SOMA) for Autonomous Robotic Agents",
+                            authors: "Beßler, Daniel, Robert Porzel, Mihai Pomarlan, Abhijit Vyas, Sebastian Höffner, Michael Beetz, Rainer Malaka, and John Bateman",
+                            link: ""
+                        },
+                        {
+                            title: "The Robot Household Marathon Experiment",
+                            authors: "Gayane Kazhoyan, Simon Stelter, Franklin Kenghagho Kenfack, Sebastian Koralewski, and Michael Beetz",
+                            link: "https://arxiv.org/abs/2011.09792"
+                        },
+                        {
+                            title: "Imagination-enabled Robot Perception",
+                            authors: "Patrick Mania, Franklin Kenghagho Kenfack, Michael Neumann, and Michael Beetz",
+                            link: "https://arxiv.org/abs/2011.11397"
+                        }
+                    ]
+                },
+                2019: {
+                    journal: [
+                        {
+                            title: "MatCALO: Knowledge-enabled machine learning in materials science",
+                            authors: "Mareike Picklum and Michael Beetz",
+                            venue: "Computational Materials Science",
+                            volume: "163",
+                            pages: "50-62",
+                            link: "http://www.sciencedirect.com/science/article/pii/S0927025619301296",
+                            doi: "https://doi.org/10.1016/j.commatsci.2019.03.005"
+                        },
+                        {
+                            title: "From Research to Market: Building the Perception Systems for the Next Generation of Industrial Robots – Interview with Dr. Michael Suppa, CEO and Founder of the Startup Roboception",
+                            authors: "Bartels, Georg, and Beetz, Michael",
+                            venue: "KI - Künstliche Intelligenz",
+                            link: "https://doi.org/10.1007/s13218-019-00583-4"
+                        },
+                        {
+                            title: "Perception-guided Mobile Manipulation Robots for Automation of Warehouse Logistics – Interview with Dr. Moritz Tenorth, CTO of the Startup Magazino",
+                            authors: "Bartels, Georg, and Beetz, Michael",
+                            venue: "KI - Künstliche Intelligenz",
+                            link: "https://doi.org/10.1007/s13218-019-00585-2"
+                        },
+                        {
+                            title: "Episodic Memories for Safety-Aware Robots – Knowledge Representation and Reasoning for Robots that Safely Interact with Human Co-Workers",
+                            authors: "Bartels, Georg, Beßler, Daniel and Beetz, Michael",
+                            venue: "KI - Künstliche Intelligenz",
+                            link: "https://doi.org/10.1007/s13218-019-00584-3"
+                        },
+                        {
+                            title: "Foundational Models for Manipulation Activity Parsing",
+                            authors: "Beßler, Daniel, Porzel, Robert, Pomarlan Mihai and Beetz, Michael",
+                            venue: "Chapter in Augmented Reality and Virtual Reality – Changing Realities in a Dynamic World, Springer",
+                            link: "https://www.springer.com/gp/book/9783030378684"
+                        },
+                        {
+                            title: "Information System for Storage, Management and Usage for Embodied Intelligent Agents",
+                            authors: "Beßler, Daniel, Bozcuoglu, Asil Kaan and Beetz, Michael",
+                            venue: "Chapter in Information Storage from a multi-disciplinary perspective, Springer",
+                            link: "https://www.springer.com/gp/book/9783030192617"
+                        },
+                        {
+                            title: "Self-specialization of General Robot Plans Based on Experience",
+                            authors: "Koralewski, Sebastian, Kazhoyan, Gayane and Beetz, Michael",
+                            venue: "Robotics and Automation Letters, IEEE"
+                        },
+                        {
+                            title: "Cognition-enabled Robotic Wiping: Representation, Planning, Execution, and Interpretation",
+                            authors: "Leidner, Daniel, Bartels, Georg, Bejjani, Wissam, Albu-Schäffer, Alin and Beetz, Michael",
+                            venue: "Robotics and Autonomous Systems, Elsevier",
+                            volume: "114",
+                            pages: "199–216",
+                            doi: "https://doi.org/10.1016/j.robot.2018.11.018"
+                        },
+                        {
+                            title: "A Review and Comparison of Ontology-based Approaches to Robot Autonomy",
+                            authors: "Olivares-Alarcos, Alberto, Beßler, Daniel, Khamis, Alaa, Goncalves, Paulo, Habib, Maki, Bermejo, Julita, Barreto, Marcos, Diab, Mohammed, Rosell, Jan, Quintas, João, Olszewska, Joanna, Nakawala, Hirenkumar, Pignaton, Edison, Gyrard, Amelie, Borgo, Stefano, Alenyà, Guillem, Beetz, Michael and Li, Howard",
+                            venue: "The Knowledge Engineering Review, Cambridge University Press",
+                            volume: "34",
+                            pages: "e29",
+                            link: "https://ai.uni-bremen.de/papers/olivares19ker.pdf",
+                            doi: "https://doi.org/10.1017/S0269888919000237"
+                        },
+                        {
+                            title: "Cut & recombine: reuse of robot action components based on simple language instructions",
+                            authors: "Minija Tamosiunaite, Mohamad Javad Aein, Jan Matthias Braun, Tomas Kulvicius, Irena Markievicz, Jurgita Kapociute-Dzikiene, Rita Valteryte, Andrei Haidu, Dimitrios Chrysostomou, Barry Ridge, Tomas Krilavicius, Daiva Vitkute-Adzgauskiene, Michael Beetz, Ole Madsen, Ales Ude, Norbert Krüger and Florentin Wörgötter",
+                            venue: "The International Journal of Robotics Research",
+                            doi: "https://doi.org/10.1177/0278364919865594"
+                        },
+                        {
+                            title: "Query-based Integration of Heterogeneous Knowledge Bases for Search and Rescue Tasks",
+                            authors: "Yazdani, Fereshta, Blumenthal, Sebastian, Huebel, Nico, Bozcuoglu, Asil Kaan, Beetz, Michael and Bruyninckx, Herman",
+                            venue: "Robotics and Autonomous Systems (RAS), Elsevier",
+                            volume: "117",
+                            pages: "80-91",
+                            doi: "https://doi.org/10.1016/j.robot.2019.03.013"
+                        }
+                    ],
+                    conference: [
+                        {
+                            title: "Continuous Modeling of Affordances in a Symbolic Knowledge Base",
+                            authors: "Bozcuoglu, Asil Kaan, Furuta, Yuki, Okada, Kei, Beetz, Michael and Inaba, Masayuki",
+                            venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+                            location: "Macau, China"
+                        },
+                        {
+                            title: "An Ontology for Failure Interpretation in Automated Planning and Execution",
+                            authors: "Diab, Mohammed, Pomarlan, Mihai, Beßler, Daniel, Abkari, Aliakbar, Rossel, Jan, Bateman, John and Beetz, Michael",
+                            venue: "Fourth Iberian Robotics Conference",
+                            location: "Porto, Portugal"
+                        },
+                        {
+                            title: "Adapting Everyday Manipulation Skills to Varied Scenarios",
+                            authors: "Pawel Gajewski, Paulo Ferreira, Georg Bartels, Chaozheng Wang, Frank Guerin, Bipin Indurkhya, Michael Beetz and Bartlomiej Sniezynski",
+                            venue: "International Conference on Robotics and Automation (ICRA)",
+                            location: "Montreal, Canada"
+                        },
+                        {
+                            title: "Automated Models of Human Everyday Activity based on Game and Virtual Reality Technology",
+                            authors: "Andrei Haidu and Michael Beetz",
+                            venue: "International Conference on Robotics and Automation (ICRA)",
+                            location: "Montreal, Canada",
+                            link: "https://ai.uni-bremen.de/papers/haidu19ameva.pdf",
+                            doi: "https://doi.org/10.1109/ICRA.2019.8793859"
+                        },
+                        {
+                            title: "Accomplishing Variations of Mobile Manipulation Actions through Generalized Robot Plans",
+                            authors: "Gayane Kazhoyan and Michael Beetz",
+                            venue: "Proceedings of the Seventh Annual Conference on Advances in Cognitive Systems"
+                        },
+                        {
+                            title: "Executing Underspecified Actions in Real World Based on Online Projection",
+                            authors: "Gayane Kazhoyan and Michael Beetz",
+                            venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+                            doi: "https://doi.org/10.1109/IROS40897.2019.8967867"
+                        },
+                        {
+                            title: "A Framework for Self-Training Perceptual Agents in Simulated Photorealistic Environments",
+                            authors: "Patrick Mania and Michael Beetz",
+                            venue: "International Conference on Robotics and Automation (ICRA)",
+                            location: "Montreal, Canada",
+                            link: "https://ai.uni-bremen.de/papers/mania19scenarios.pdf"
+                        }
+                    ]
+                },
+                2018: {
+                    journal: [
+                        {
+                            title: "Adapting Everyday Manipulation Skills to Varied Scenarios",
+                            authors: "Gajewski, Pawel, Ferreira, Paulo, Bartels, Georg, Wang, Chaozheng, Guerin, Frank, Indurkhya, Bipin, Beetz, Michael and Sniezynski, Bartlomiej",
+                            venue: "arXiv preprint arXiv:1803.02743",
+                            link: "https://arxiv.org/abs/1803.02743"
+                        },
+                        {
+                            title: "Cloud-based Probabilistic Knowledge Services for Instruction Interpretation",
+                            authors: "Nyga, Daniel and Beetz, Michael",
+                            venue: "Chapter in Robotics Research, Springer",
+                            volume: "2",
+                            pages: "649–664"
+                        },
+                        {
+                            title: "Multidimensional Time Series Shapelets Reliably Detect and Classify Contact Events in Force Measurements of Wiping Actions",
+                            authors: "Stelter, Simon, Bartels, Georg, and Beetz, Michael",
+                            venue: "Robotics and Automation Letters, IEEE",
+                            link: "https://ai.uni-bremen.de/papers/stelter2018shapelets.pdf",
+                            doi: "https://doi.org/10.1109/LRA.2017.2716423"
+                        },
+                        {
+                            title: "The Exchange of Knowledge using Cloud Robotics",
+                            authors: "Bozcuoglu, Asil Kaan, Kazhoyan, Gayane, Furuta, Yuki, Stelter, Simon, Beetz, Michael, Okada, Kei and Inaba, Masayuki",
+                            venue: "Robotics and Automation Letters, IEEE",
+                            volume: "3",
+                            issue: "2",
+                            pages: "1072-1079",
+                            doi: "https://doi.org/10.1109/LRA.2018.2794626"
+                        }
+                    ],
+                    conference: [
+                        {
+                            title: "Variations on a Theme: 'It's a poor sort of memory that only works backwards'",
+                            authors: "Balint-Benczedi, Ferenc and Beetz, Michael",
+                            venue: "International Conference on Intelligent Robots and Systems",
+                            doi: "https://doi.org/10.1109/IROS.2018.8594001"
+                        },
+                        {
+                            title: "KnowRob 2.0 – A 2nd Generation Knowledge Processing Framework for Cognition-enabled Robotic Agents",
+                            authors: "Michael Beetz, Daniel Beßler, Andrei Haidu, Mihai Pomarlan, Asil Kaan Bozcuoglu and Georg Bartels",
+                            venue: "International Conference on Robotics and Automation (ICRA)",
+                            location: "Brisbane, Australia",
+                            link: "https://ai.uni-bremen.de/papers/beetz18knowrob.pdf"
+                        },
+                        {
+                            title: "OWL-enabled Assembly Planning for Robotic Agents",
+                            authors: "Beßler, Daniel, Pomarlan, Mihai and Beetz, Michael",
+                            venue: "Proceedings of the 2018 International Conference on Autonomous Agents",
+                            location: "Stockholm, Sweden",
+                            link: "https://ai.uni-bremen.de/papers/bessler18aamas.pdf"
+                        },
+                        {
+                            title: "Assembly Planning in Cluttered Environments through Heterogeneous Reasoning",
+                            authors: "Beßler, Daniel, Pomarlan, Mihai, Akbari, Aliakbar, Muhayyuddin, Diab, Mohammed, Rosell, Jan, Bateman, John and Beetz, Michael",
+                            venue: "41st German Conference on Artificial Intelligence (KI), Springer",
+                            location: "Berlin, Germany"
+                        },
+                        {
+                            title: "The Exchange of Knowledge using Cloud Robotics",
+                            authors: "Bozcuoglu, Asil Kaan, Kazhoyan, Gayane, Furuta, Yuki, Stelter, Simon, Beetz, Michael, Okada, Kei and Inaba, Masayuki",
+                            venue: "International Conference on Robotics and Automation (ICRA)",
+                            location: "Brisbane, Australia",
+                            note: "Finalist for the Best Cognitive Robotics Paper Award, Finalist for the Best Service Robotics Paper Award"
+                        },
+                        {
+                            title: "6DoF Pose Estimation for Industrial Manipulation based on Synthetic Data",
+                            authors: "Brucker, Manuel, Durner, Maximilian, Márton, Zoltan-Csaba, Balint-Benczedi, Ferenc, Sundermeyer, Martin and Triebel, Rudolph",
+                            venue: "International Symposium on Experimental Robotics (ISER)",
+                            status: "Accepted for publication"
+                        },
+                        {
+                            title: "Reasoning Systems for Semantic Navigation in Mobile Robots",
+                            authors: "Crespo, Jonathan, Barber, Ramon, Mozos, Oscar, Beßler, Daniel and Beetz, Michael",
+                            venue: "International Conference on Intelligent Robots and Systems"
+                        },
+                        {
+                            title: "KNOWROB-SIM — Game Engine-enabled Knowledge Processing for Cognition-enabled Robot Control",
+                            authors: "Haidu, Andrei, Beßler, Daniel, Bozcuoglu, Asil Kaan and Beetz, Michael",
+                            venue: "International Conference on Intelligent Robots and Systems (IROS)",
+                            location: "Madrid, Spain",
+                            link: "https://ai.uni-bremen.de/papers/haidu18gameengine.pdf",
+                            doi: "https://doi.org/10.1109/IROS.2018.8593935"
+                        },
+                        {
+                            title: "Grounding Robot Plans from Natural Language Instructions with Incomplete World Knowledge",
+                            authors: "Nyga, Daniel, Roy, Subhro, Paul, Rohan, Park, Daehyung, Pomarlan, Mihai, Beetz, Michael and Roy, Nicholas",
+                            venue: "2nd Conference on Robot Learning (CoRL 2018)",
+                            location: "Zurich, Switzerland",
+                            link: "http://proceedings.mlr.press/v87/nyga18a/nyga18a.pdf"
+                        },
+                        {
+                            title: "Cognition-enabled Framework for Mixed Human-Robot Rescue Team",
+                            authors: "Yazdani, Fereshta, Kazhoyan, Gayane, Bozcuoglu, Asil Kaan, Haidu, Andrei, Balint-Benczedi, Ferenc, Beßler, Daniel, Pomarlan, Mihai and Beetz, Michael",
+                            venue: "International Conference on Intelligent Robots and Systems (IROS)",
+                            location: "Madrid, Spain"
+                        }
+                    ],
+                    workshop: [
+                        {
+                            title: "Towards a Photorealistic Learning Infrastructure for Human Activities",
+                            authors: "Mona Abdel-Keream, Michael Beetz, Patrick Mania and Jose Rojas",
+                            venue: "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)",
+                            location: "Madrid, Spain"
+                        },
+                        {
+                            title: "Knowledge Representation for Cognition- and Learning-enabled Robot Manipulation",
+                            authors: "Beßler, Daniel, Koralewski, Sebastian and Beetz, Michael",
+                            venue: "Proc. 11th International Cognitive Robotics Workshop (CogRob 2018), AAAI Press",
+                            status: "Accepted for publication"
+                        }
+                    ]
+                },
+                2021: {
+                    journal: [
+                        {
+                        title: "Semantic Digital Twins for Retail Logistics",
+                        authors: "Kümpel, Michaela and Mueller, Christian A. and Beetz, Michael",
+                        venue: "Chapter in Dynamics in Logistics: Twenty-Five Years of Interdisciplinary Logistics Research in Bremen, Germany",
+                        link: "https://doi.org/10.1007/978-3-030-88662-2_7",
+                        publisher: "Springer International Publishing, Cham",
+                        pages: "129–153",
+                        },
+                    ],
+                    conference: [
+                        {
+                        title: "Cutting Events: Towards Autonomous Plan Adaption by Robotic Agents through Image-Schematic Event Segmentation",
+                        authors: "Dhanabalachandran, Kaviya, Hassouna, Vanessa, Hedblom, Maria M., Kümpel, Michaela, Leusmann, Nils and Beetz, Michael",
+                        venue: "In Proceedings of the 11th on Knowledge Capture Conference",
+                        link: "https://doi.org/10.1145/3460210.3493585",
+                        publisher: "Association for Computing Machinery, New York, NY, USA",
+                        pages: "25–32",
+                        },
+                        {
+                        title: "Robot Program Parameter Inference via Differentiable Shadow Program Inversion",
+                        authors: "Benjamin Alt, Darko Katic, Rainer Jäkel, Asil Kaan Bozcuoglu and Michael Beetz",
+                        venue: "In IEEE International Conference on Robotics and Automation (ICRA)",
+                        link: "https://arxiv.org/abs/2103.14452",
+                        location: "Xi'an, China",
+                        },
+                        {
+                        title: "Foundations of the Socio-physical Model of Activities (SOMA) for Autonomous Robotic Agents",
+                        authors: "Daniel Beßler, Robert Porzel, Mihai Pomarlan, Abhijit Vyas, Sebastian Höffner, Michael Beetz, Rainer Malaka and John Bateman",
+                        venue: "In Formal Ontology in Information Systems - Proceedings of the 12th International Conference, FOIS 2021",
+                        link: "https://ai.uni-bremen.de/papers/bessler21soma.pdf",
+                        location: "Bozen-Bolzano, Italy",
+                        publisher: "IOS Press",
+                        },
+                        {
+                        title: "Automated acquisition of structured, semantic models of manipulation activities from human VR demonstration",
+                        authors: "Andrei Haidu and Michael Beetz",
+                        venue: "In IEEE International Conference on Robotics and Automation (ICRA)",
+                        link: "https://arxiv.org/abs/2011.13689",
+                        location: "Xi'an, China",
+                        },
+                        {
+                        title: "Knowledge-enabled generation of semantically annotated image sequences of manipulation activities from VR demonstrations",
+                        authors: "Andrei Haidu, Xiaoyue Zhang and Michael Beetz",
+                        venue: "In 13th International Conference on Computer Vision System (ICVS)",
+                        link: "https://doi.org/10.1007/978-3-030-87156-7_11",
+                        location: "Vienna, Austria",
+                        },
+                        {
+                        title: "The Robot Household Marathon Experiment",
+                        authors: "Gayane Kazhoyan, Simon Stelter, Franklin Kenghagho Kenfack, Sebastian Koralewski and Michael Beetz",
+                        venue: "In IEEE International Conference on Robotics and Automation (ICRA)",
+                        link: "https://arxiv.org/abs/2011.09792",
+                        },
+                        {
+                        title: "Imagination-enabled Robot Perception",
+                        authors: "Patrick Mania, Franklin Kenghagho Kenfack, Michael Neumann and Michael Beetz",
+                        venue: "In International Conference on Intelligent Robots and Systems (IROS)",
+                        },
+                        {
+                        title: "Planning and Action Organization in Ill-Defined Tasks: The Case of Everyday Activities",
+                        authors: "Wenzl, Petra and Schultheis, Holger",
+                        venue: "In Proceedings of the 43rd Annual Meeting of the Cognitive Science Society",
+                        publisher: "Cognitive Science Society",
+                        pages: "2108–2114",
+                        },
+                    ],
+                    workshop: [
+                        {
+                        title: "FailRecOnt – An Ontology-based Framework for Failure Interpretation and Recovery in Planning and Execution",
+                        authors: "Mohammed Diab, Mihai Pomarlan, Stefano Borgo, Daniel Beßler, Jan Rosell, John Bateman and Michael Beetz",
+                        venue: "In Proceedings of the Joint Ontology Workshops co-located with the Bolzano Summer of Knowledge (BOSK 2021)",
+                        publisher: "CEUR-WS.org",
+                        },
+                        {
+                        title: "URoboSim — a simulation-based predictive modelling engine for cognition-enabled robot manipulation",
+                        authors: "Michael Neumann, Andrei Haidu and Michael Beetz",
+                        venue: "In 2nd Embodied AI Workshop (CVPR)",
+                        link: "https://embodied-ai.org/papers/URoboSim.pdf",
+                        },
+                        {
+                        title: "Inferring dispositions from Object Shape and Material with physics game engine modelling",
+                        authors: "Abhijit Vyas, Daniel Beßler and Michael Beetz",
+                        venue: "In RobOntics workshop",
+                        link: "http://ceur-ws.org/Vol-2969/paper79-RobOntics.pdf",
+                        },
+                    ],
+                    other: [
+                        {
+                        title: "Prolog as a Querying Language for MongoDB",
+                        authors: "Daniel Beßler, Sascha Jongebloed and Michael Beetz",
+                        },
+                        {
+                        title: "Realizing Trustworthiness in Linked Data Applications Based on Individual Data Source Trust Assessment.",
+                        authors: "Michaela Kümpel and Michael Beetz",
+                        link: "https://raw.githubusercontent.com/robontics2021/robontics2021.github.io/master/assets/TrustingLinkedDataExtendedAbstract.pdf",
+                        },
+                    ],
+                },
+                2022: {
+                    book: [
+                        {
+                        title: "Robots Collecting Data: Modelling Stores",
+                        authors: "Beetz, Michael, Stelter, Simon, Beßler, Daniel, Dhanabalachandran, Kaviya, Neumann, Michael, Mania, Patrick and Haidu, Andrei",
+                        publisher: "Springer International Publishing, Cham",
+                        link: "https://doi.org/10.1007/978-3-031-06078-6_2",
+                        pages: "41–64",
+                        },
+                        {
+                        title: "Robotic Clerks: Autonomous Shelf Refilling",
+                        authors: "Cavallo, Alberto, Costanzo, Marco, De Maria, Giuseppe, Natale, Ciro, Pirozzi, Salvatore, Stelter, Simon, Kazhoyan, Gayane, Koralewski, Sebastian and Beetz, Michael",
+                        publisher: "Springer International Publishing, Cham",
+                        link: "https://doi.org/10.1007/978-3-031-06078-6_6",
+                        pages: "137–170",
+                        },
+                    ],
+                    journal: [
+                        {
+                        title: "Improving Object Pose Estimation by Fusion With a Multimodal Prior – Utilizing Uncertainty-Based CNN Pipelines for Robotics",
+                        authors: "Richter-Klug, Jesse, Mania, Patrick, Kazhoyan, Gayane, Beetz, Michael and Frese, Udo",
+                        venue: "IEEE Robotics and Automation Letters",
+                        link: "https://doi.org/10.1109/LRA.2022.3140450",
+                        volume: "7",
+                        issue: "2",
+                        pages: "2282–2288",
+                        },
+                        {
+                        title: "Human Lower Limb Motion Capture and Recognition Based on Smartphones",
+                        authors: "Duan, Lin-Tao, Lawo, Michael, Wang, Zhi-Guo and Wang, Hai-Ying",
+                        venue: "Sensors",
+                        link: "https://www.mdpi.com/1424-8220/22/14/5273",
+                        volume: "22",
+                        issue: "14",
+                        },
+                    ],
+                    conference: [
+                        {
+                        title: "Robotizing the Sterility Testing Process: Scientific Challenges for Bringing Agile Robots into the Laboratory",
+                        authors: "Remazeilles, Anthony, Rasines, Irati, Fernandez, Asier, Neumann, Maike, Beetz, Michael, Grossard, Mathieu, Hellingman, Clive, Coulon, Carl-Helmut, Cichon, Torben, Gosselin, Florian and Vincze, Markus",
+                        venue: "ROBOT2022: Fifth Iberian Robotics Conference",
+                        publisher: "Springer International Publishing, Cham",
+                        pages: "223–234",
+                        },
+                        {
+                        title: "The Downgrading Axioms Challenge for Qualitative Composition of Food Ingredients",
+                        authors: "Krieg-Brückner, Bernd, Nolte, Mark Robin, Pomarlan, Mihai and Kümpel, Michaela",
+                        venue: "SemREC 2022, 2nd Semantic Reasoning Evaluation Challenge 2022",
+                        link: "https://ceur-ws.org/Vol-3337/semrec_paper2.pdf",
+                        volume: "3337",
+                        pages: "6–15",
+                        },
+                        {
+                        title: "Simulation-Based Debugging of Formal Environment Models",
+                        authors: "Tim Meywerk, Arthur Niedzwiecki, Vladimir Herdt and Rolf Drechsler",
+                        venue: "30th Mediterranean Conference on Control and Automation, MED 2022, Vouliagmeni, Greece",
+                        link: "https://doi.org/10.1109/MED54222.2022.9837055",
+                        publisher: "IEEE",
+                        pages: "890–895",
+                        },
+                    ],
+                    other: [
+                        {
+                        title: "Ontological representation of activity context for flexible robot task execution",
+                        authors: "Daniel Beßler",
+                        type: "PhD thesis",
+                        institution: "University of Bremen",
+                        link: "https://doi.org/10.26092/elib/1810",
+                        },
+                    ],
+                },
+                2023: {
+                    conference: [
+                        {
+                        title: "Towards a Neuronally Consistent Ontology for Robotic Agents",
+                        authors: "Ahrens, Florian, Pomarlan, Mihai, Beßler, Daniel, Fehr, Thorsten, Beetz, Michael and Herrmann, Manfred",
+                        venue: "ECAI 2023",
+                        link: "https://browse.arxiv.org/pdf/2309.14841.pdf",
+                        status: "Accepted for publication",
+                        },
+                        {
+                        title: "Robotic Shopping Assistance for Everyone: Dynamic Query Generation on a Semantic Digital Twin as a Basis for Autonomous Shopping Assistance",
+                        authors: "Michaela Kümpel, Jonas Dech, Alina Hawkin and Michael Beetz",
+                        venue: "Proceedings of the 22nd International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2023)",
+                        location: "London, United Kingdom",
+                        pages: "2523–2525",
+                        link: "https://www.southampton.ac.uk/~eg/AAMAS2023/pdfs/p2523.pdf",
+                        },
+                        {
+                        title: "ProductKG: A Product Knowledge Graph for User Assistance in Daily Activities",
+                        authors: "Kümpel, Michaela and Beetz, Michael",
+                        venue: "Ontology Showcase and Demonstrations Track, co-located with FOIS 2023, Sherbrooke, Québec, Canada",
+                        volume: "3637",
+                        year: 2023,
+                        link: "https://ceur-ws.org/Vol-3637/paper52.pdf",
+                        },
+                        {
+                        title: "Retail SemDT Collection Knowledge-base, A Platform Architecture",
+                        authors: "Nils Leusmann, Glareh Mir, Giang Nguyen, Simon Stelter, Kaviya Dhanabalachandran, Cagatay Odabasi, Maik Malki, Alina Hawkin, Felix Bazlen and Michael Beetz",
+                        venue: "2023 IEEE Smart World Congress (SWC)",
+                        pages: "1–6",
+                        },
+                        {
+                        title: "Towards an Ontology for Robot Introspection and Metacognition",
+                        authors: "Robin Nolte, Mihai Pomarlan, Daniel Beßler, Robert Porzel, Rainer Malaka and John Bateman",
+                        venue: "Formal Ontology in Information Systems - Proceedings of the 14th International Conference, FOIS 2023, Sherbrooke, Québec, Canada",
+                        status: "Accepted for publication",
+                        },
+                        {
+                        title: "Joint Probability Trees",
+                        authors: "Daniel Nyga, Mareike Picklum, Tom Schierenbeck and Michael Beetz",
+                        venue: "Arxiv.org",
+                        link: "http://arxiv.org/abs/2302.07167",
+                        status: "Preprint",
+                        },
+                    ],
+                    workshop: [
+                        {
+                        title: "An Ontological Model of User Preferences",
+                        authors: "Mona Abdel-Keream, Daniel Beßler, Ayden Janssen, Sascha Jongebloed, Robin Nolte, Mihai Pomarlan and Robert Porzel",
+                        venue: "RobOntics workshop",
+                        },
+                        {
+                        title: "Evaluation of Autonomous Shopping Assistants Using Semantic Digital Twin Stores",
+                        authors: "Kümpel, M., Dech, J., Hawkin, A. and Beetz, Michael",
+                        venue: "AIC'23: 9th workshop on Artificial Intelligence and Cognition",
+                        },
+                        {
+                        title: "Trust, But Verify: Towards Trustworthiness in Digital Assistants Based on Verifiable Claims in Knowledge Graphs",
+                        authors: "Kümpel, M., Buchinger, M., Sellami, M., Balta, D. and Beetz, Michael",
+                        venue: "AIC'23: 9th workshop on Artificial Intelligence and Cognition",
+                        },
+                        {
+                        title: "Ontological Context for Gesture Interpretation",
+                        authors: "Petr Vanc and Karla Stepanova",
+                        venue: "RobOntics workshop",
+                        },
+                    ],
+                    other: [
+                        {
+                        title: "The CRAM Cognitive Architecture for Robot Manipulation in Everyday Activities",
+                        authors: "Michael Beetz, Gayane Kazhoyan and David Vernon",
+                        },
+                    ],
+                },
+                2024: {
+                    journal: [
+                        {
+                        title: "MARLIN: A cloud integrated robotic solution to support intralogistics in retail",
+                        authors: "Dennis Mronga, Andreas Bresser, Fabias Maas genannt Bermpohl, Adrian Danzglock, Simon Stelter, Alina Hawkin, Giang Nguyen, Michael Beetz and Frank Kirchner",
+                        venue: "Robotics and Autonomous Systems",
+                        volume: "175",
+                        pages: "104654",
+                        link: "https://www.sciencedirect.com/science/article/pii/S092188902400037X",
+                        doi: "https://doi.org/10.1016/j.robot.2024.104654",
+                        },
+                        {
+                        title: "Action Selection in Everyday Activities: The Opportunistic Planning Model",
+                        authors: "Wenzl, Petra and Schultheis, Holger",
+                        venue: "Cognitive Science",
+                        volume: "48",
+                        issue: "4",
+                        pages: "e13444",
+                        doi: "https://doi.org/10.1111/cogs.13444",
+                        },
+                    ],
+                    conference: [
+                        {
+                        title: "Task Learning Using Actionable Knowledge Graphs",
+                        authors: "Kümpel, Michaela, Vyas, Abhijit, Hassouna, Vanessa and Beetz, Michael",
+                        venue: "ICRA40 - 40th Anniversary of the IEEE International Conference on Robotics and Automation",
+                        status: "in press",
+                        },
+                        {
+                        title: "Towards a Knowledge Engineering Methodology for Flexible Robot Manipulation in Everyday Tasks",
+                        authors: "Kümpel, Michaela, Töberg, Jan-Phillip, Hassouna, Vanessa, Cimiano, Phillip and Beetz, Michael",
+                        venue: "Actionable Knowledge Representation and Reasoning for Robots (AKR^3) at European Semantic Web Conference (ESWC)",
+                        link: "https://ceur-ws.org/Vol-3749/akr3-04.pdf",
+                        },
+                        {
+                        title: "An Open and Flexible Robot Perception Framework for Mobile Manipulation Tasks",
+                        authors: "Mania, Patrick, Stelter, Simon, Kazhoyan, Gayane and Beetz, Michael",
+                        venue: "2024 International Conference on Robotics and Automation (ICRA)",
+                        },
+                        {
+                        title: "Translating universal scene descriptions into knowledge graphs for robotic environment",
+                        authors: "Giang Nguyen, Daniel Beßler, Simon Stelter, Mihai Pomarlan and Michael Beetz",
+                        venue: "2024 IEEE International Conference on Robotics and Automation (ICRA)",
+                        pages: "9389–9395",
+                        },
+                        {
+                        title: "Cloud-based Digital Twin for Cognitive Robotics",
+                        authors: "Niedzwiecki, A., Jongebloed, S., Zhan, Y., Kümpel, M., Syrbe, J., Beetz, M.",
+                        venue: "IEEE Global Engineering Education Conference (EDUCON) 2024",
+                        pages: "1-5",
+                        doi: "https://doi.org/10.1109/EDUCON60312.2024.10578841",
+                        },
+                        {
+                        title: "Interactive E-Learning Environment for Cognitive Robotics",
+                        authors: "Syrbe, J., Rümenapp, T., Wenzl, P., Kümpel, M., Beetz, M., Niedzwiecki, A.",
+                        venue: "IEEE Global Engineering Education Conference (EDUCON) 2024",
+                        pages: "01-09",
+                        doi: "https://doi.org/10.1109/EDUCON60312.2024.10578630",
+                        },
+                    ],
+                    workshop: [
+                        {
+                        title: "Transforming Web Knowledge into Actionable Knowledge Graphs for Robot Manipulation Tasks",
+                        authors: "Beetz, Michael, Cimiano, Philipp, Kümpel, Michaela, Motta, Enrico, Tiddi, Ilaria and Töberg, Jan-Philipp",
+                        venue: "ESWC 2024 Workshops and Tutorials Joint Proceedings, May 26-27, Heraklion, Greece",
+                        link: "https://ceur-ws.org/Vol-3749/akr3-tutorial.pdf",
+                        },
+                        {
+                        title: "Translating Actionable Knowledge Graphs into Robot Action Execution",
+                        authors: "Beetz, Michael, Cimiano, Philipp, Kümpel, Michaela, Motta, Enrico, Tiddi, Ilaria and Töberg, Jan-Philipp",
+                        venue: "HHAI-WS 2024: Workshops at the Third International Conference on Hybrid Human-Artificial Intelligence (HHAI), June 10-11, Malmö, Sweden",
+                        status: "in press",
+                        },
+                        {
+                        title: "Between Input and Output: The Importance of Modelling Transients in Meal Preparation Tasks",
+                        authors: "Kümpel, Michaela, Hassouna, Vanessa, Hawkin, Alina and Beetz, Michael",
+                        venue: "Proceedings of the Joint Ontology Workshops (JOWO) - Episode X: The Tukker Zomer of Ontology, and satellite events co-located with the 14th International Conference on Formal Ontology in Information Systems (FOIS 2024), July 15-19, Enschede, The Netherlands",
+                        },
+                    ],
+                }
+            };
+
+            function renderPublicationsBySection(section, publicationsByYear) {
+                const container = document.querySelector('#publications-container');
+                const sectionHeader = document.createElement('h3');
+                sectionHeader.textContent = section.charAt(0).toUpperCase() + section.slice(1);
+                container.appendChild(sectionHeader);
+
+                const list = document.createElement('ol');
+                publicationsByYear.forEach(pub => {
+                    const listItem = document.createElement('li');
+                    const linkPart = pub.link ? `<a class="text-black" href="${pub.link}" target="_blank">${pub.title}</a>` : pub.title;
+                    listItem.innerHTML = `  ${linkPart}
+                                            <span class="text-black">,[${pub.authors}],(${pub.venue})</span>`;
+                    list.appendChild(listItem);
+                });
+                container.appendChild(list);
+            }
+
+            function renderAllYears() {
+                const container = document.querySelector('#publications-container');
+                container.innerHTML = '';
+
+                const sections = ['journal', 'book', 'conference', 'workshop', 'other'];
+                const allPublications = {};
+
+                // Combine publications for all years under each section
+                sections.forEach(section => {
+                    allPublications[section] = [];
+                    Object.keys(publications).forEach(year => {
+                        if (publications[year][section]) {
+                            allPublications[section] = allPublications[section].concat(publications[year][section]);
+                        }
+                    });
+                });
+
+                // Render sections
+                sections.forEach(section => {
+                    if (allPublications[section].length > 0) {
+                        renderPublicationsBySection(section, allPublications[section]);
+                    }
+                });
+            }
+
+            function renderYear(year) {
+                const container = document.querySelector('#publications-container');
+                container.innerHTML = '';
+
+                const sections = ['journal', 'book', 'conference', 'workshop', 'other'];
+
+                sections.forEach(section => {
+                    if (publications[year] && publications[year][section]) {
+                        renderPublicationsBySection(section, publications[year][section]);
+                    }
+                });
+            }
+
+            const yearFilter = document.querySelector('#year-filter');
+            yearFilter.addEventListener('change', () => {
+                const selectedYear = yearFilter.value;
+                if (selectedYear === 'all') {
+                    renderAllYears();
+                } else {
+                    renderYear(selectedYear);
+                }
+            });
+
+        });
+    </script>
+
 </body>
 </html>
