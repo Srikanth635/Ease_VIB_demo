@@ -23,6 +23,9 @@
             background-attachment: fixed;
             z-index: -1;
         }
+        .modal-xl {
+        max-width: 90%;
+        }
     </style>
 </head>
 <body>
@@ -30,17 +33,15 @@
     <div class="background"></div>
 
     <!-- Header Section -->
-    <header class="text-center py-2" style="background: linear-gradient(to top, rgba(255, 255, 255,0), rgba(0, 0, 0, 0.8));  overflow: hidden;">
+    <header class="text-center py-2" style="background: linear-gradient(to top, rgba(255, 255, 255,0), rgba(0, 0, 0, 0.8)); overflow: hidden;">
         <div class="container d-flex flex-column flex-md-row align-items-center justify-content-around">
             <!-- Left Logo -->
             <img src="../images/EASE_logo.png" alt="Left Image" class="img-fluid" style="max-width: 250px; height: auto;">
-    
             <!-- Header Text -->
             <div>
                 <h1 class="display-4 text-white" style="font-weight: 700;">EASE Virtual Research Building</h1>
                 <p class="lead text-white fw-bold" style="font-size: 1.2rem;">Driving Collaboration, Innovation, and Accessibility in AI and Robotics</p>
             </div>
-    
             <!-- Right Logo -->
             <a href="https://ai.uni-bremen.de/" target="_blank">
                 <img src="../images/Logo - IAI Schrift.png" alt="Right Image" class="img-fluid" style="max-width: 250px; height: auto;">
@@ -59,22 +60,21 @@
                     <li class="nav-item"><a href="./Collaboration.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Collaborate</a></li>
                     <li class="nav-item"><a href="./Resources.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Resources</a></li>
                     <li class="nav-item"><a href="./Education.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Education</a></li>
-                    <!-- <li class="nav-item"><a href="ViBHomepage_new.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">ViB</a></li> -->
                     <li class="nav-item"><a href="./competition.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Competition</a></li>
                     <li class="nav-item"><a href="./Contact.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Contact</a></li>
-                    <!-- <li class="nav-item"><a href="testing.html" class="nav-link fs-5 fw-bold text-white" style="margin: 0 10px;">Testing</a></li> -->
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Labs Section -->
     <div class="container my-5" style="background-color: rgba(0, 0, 0, 0.3); border-radius: 30px; padding: 0.5rem 1rem;">
         <header class="text-center py-4">
             <div class="bg-transparent text-white py-4 px-3 rounded" style="display: inline-block;">
-                <!-- <h1 class="display-5">Virtual Labs Directory</h1> -->
                 <p class="lead display-6 fw-bold">Find and explore the labs best suited for your research needs</p>
             </div>
         </header>
+
         <section class="container my-5">
             <h2 class="text-center text-white mb-4">Filter and Search</h2>
             <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
@@ -97,6 +97,7 @@
                 <input type="text" id="searchInput" class="form-control w-auto" placeholder="Search Labs..." />
             </div>
         </section>
+
         <section class="container my-5">
             <h2 class="text-center text-white mb-4">Available Labs</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4" id="labsGrid">
@@ -107,10 +108,11 @@
                             <p class="card-text">Experiment with robotic arms for object manipulation in dynamic settings.</p>
                             <a href="https://binder.intel4coro.de/v2/gh/sunava/pycram/f19dd08d8cb0990b2f606461500d77738f9d1387?urlpath=lab%2Ftree%2Fdemos%2Fpycram_virtual_building_demos%2Fstart_demo.ipynbapartment_pr2.ipynb&environments=apartment&robots=pr2&tasks=navigating" 
                             class="btn callaction" target="_blank">Enter Lab</a>
-                            <a href="https://vib.ai.uni-bremen.de/page/labs/domestic-object-transportation-laboratory/" class="btn callaction" target="_blank">Learn More</a>
+                            <a href="#" class="btn callaction" data-bs-toggle="modal" data-bs-target="#objectTransportationModal">Learn More</a>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col" data-category="knowledgegraphs" data-tool="simulation">
                     <div class="card h-100 shadow-sm text-center">
                         <div class="card-body">
@@ -118,7 +120,7 @@
                             <p class="card-text">Develop and test algorithms for navigation in challenging environments.</p>
                             <a href="https://binder.intel4coro.de/v2/gh/LucaKro/pycram/04b1475e88e101454a0647571e22d6fd32f8994d?urlpath=lab%2Ftree%2Fdemos%2Fpycram_virtual_building_demos%2Ftransporting_actions%2Ftransport_demo_armar.ipynb" 
                             class="btn callaction" target="_blank">Enter Lab</a>
-                            <a href="https://vib.ai.uni-bremen.de/page/labs/actionable-knowledge-graph-laboratory/" class="btn callaction" target="_blank">Learn More</a>
+                            <a href="#" class="btn callaction" target="_blank" data-bs-toggle="modal" data-bs-target="#actionableKnowledgeGraphModal">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +131,7 @@
                             <p class="card-text">Study interactions between humans and robots in shared tasks.</p>
                             <a href="https://binder.intel4coro.de/v2/gh/sunava/pycram/f19dd08d8cb0990b2f606461500d77738f9d1387?urlpath=lab%2Ftree%2Fdemos%2Fpycram_virtual_building_demos%2Fstart_demo.ipynb%3Fenvironments%3Dapartment%26robots%3Dpr2%26tasks%3Dcutting%26specialized_task%3Dhalving" 
                             class="btn callaction" target="_blank">Enter Lab</a>
-                            <a href="https://vib.ai.uni-bremen.de/page/labs/action-cores/" class="btn callaction" target="_blank">Learn More</a>
+                            <a href="#" class="btn callaction" target="_blank" data-bs-toggle="modal" data-bs-target="#manipulationLabModal">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -139,7 +141,7 @@
                             <h3 class="card-title">NEEMs Demonstration Lab</h3>
                             <p class="card-text">Explore machine vision techniques for object detection and tracking.</p>
                             <a href="https://data.open-ease.org/QA" class="btn callaction" target="_blank">Enter Lab</a>
-                            <a href="https://vib.ai.uni-bremen.de/page/labs/openease-knowledge-service-laboratory/" class="btn callaction" target="_blank">Learn More</a>
+                            <a href="#" class="btn callaction" target="_blank" data-bs-toggle="modal" data-bs-target="#NEEMsModal">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +151,7 @@
                             <h3 class="card-title">Retail Robotics Lab</h3>
                             <p class="card-text">Optimize robotic workflows in simulated industrial environments.</p>
                             <a href="https://binder.intel4coro.de/v2/gh/hawkina/COAI/save-state?urlpath=lab/tree/notebooks/retail_donbot.ipynb" class="btn callaction" target="_blank">Enter Lab</a>
-                            <a href="https://vib.ai.uni-bremen.de/page/labs/dynamic-retail-robotics-laboratory/" class="btn callaction" target="_blank">Learn More</a>
+                            <a href="#" class="btn callaction" target="_blank" data-bs-toggle="modal" data-bs-target="#retailRoboticsModal">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -158,8 +160,9 @@
                         <div class="card-body">
                             <h3 class="card-title">ROS Programming for Virtual Robot</h3>
                             <p class="card-text">Immersive and practical approach to learning the intricacies of programming robots using ROS</p>
-                            <a href="https://jupyter.intel4coro.de/user/artnie-rpwr-assignments-4ly5hdss/lab/tree/rpwr-assignments/02_coordinates-tf/a2_coordinates-tf.ipynb" target="_blank"
+                            <a href="https://jupyter.intel4coro.de/user/artnie-rpwr-assignments-25uvolka/lab/tree/rpwr-assignments/02_coordinates-tf/a2_coordinates-tf.ipynb" target="_blank"
                             class="btn callaction">Enter Lab</a>
+                            <a href="#" class="btn callaction" target="_blank" data-bs-toggle="modal" data-bs-target="#learnROSModal">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -170,53 +173,688 @@
                             <p class="card-text">Learn Robot Programming through Visual Interface.</p>
                             <a href="https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/main?urlpath=lab/tree/examples/playground.jpblockly" 
                             target="_blank" class="btn callaction">Enter Lab</a>
+                            <a href="#" class="btn callaction" target="_blank" data-bs-toggle="modal" data-bs-target="#virtualProgrammingModal">Learn More</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2024 EASE Virtual Research Building
     </footer>
+
+    <div class="modal fade" id="objectTransportationModal" tabindex="-1" aria-labelledby="objectTransportationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="position: relative;">
+                <!-- Background Image -->
+                <div style="background-image: url('../images/grafik.png'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; opacity: 0.6;"></div>
+                
+                <!-- Overlay Content -->
+                <div class="modal-header" style="z-index: 2; position: relative; justify-content: center; background-color: transparent; border-bottom: none;">
+                    <h1 class="modal-title text-center fw-bold" style="color: black; font-size: 2.5rem;">Domestic Object Transportation Lab</h1>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+                </div>
+                <div class="modal-body" style="z-index: 2; position: relative; color: rgb(0, 0, 0);">
+                    <div class="container my-5">
+                        <!-- <h1 class="text-center mb-4">Domestic Object Transportation Laboratory</h1> -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Description</h2>
+                                <p>This laboratory is dedicated to advancing the capabilities of robot agents in seamlessly executing object transportation tasks within human-centric environments such as homes and retail spaces. It provides a versatile platform for exploring and refining generalized robot plans that manage the movement of diverse objects across varied settings for multiple purposes. By focusing on the adaptability and scalability of robotic programming, the lab aims to enhance the understanding and application of robotics in everyday contexts ultimately improving their generalizability, transferability, and effectiveness in real-world scenarios.</p>
+
+                                <p>In the laboratory, you are equipped with a generalized open-source robotic plan capable of executing various object transportation-related tasks, including both table setting and cleaning, across diverse domestic settings. These settings range from entire apartments to kitchen environments and the plan is adaptable to various robots. You can customize the execution by selecting the appropriate environment, task, and robot, and then run it within a software container.</p>
+
+                                <div class="image-container bg-light bg-opacity-25" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="../images/pr2_image_sequence.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+
+                                <p>Every time we think that we are getting a little bit closer to a household robot, new research comes out showing just how far we have to go. Certainly, we have seen a lot of progress in specific areas like grasping and semantic understanding etc., but putting it all together into a hardware platform that can actually do things autonomously still seems to be a long way to go.</p>
+
+                                <p>In a paper presented at ICRA 2021, researchers from the University of Bremen conducted a “Robot Household Marathon Experiment,” where a PR2 robot was tasked with first setting a table for a simple breakfast and then cleaning up afterwards in order to “investigate and evaluate the scalability and the robustness aspects of mobile manipulation.” While this may seem like something robots should have figured out, you might not be surprised to learn that it is actually still a significant challenge.</p>
+                            </div>
+                        </div>
+                
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Example Videos</h2>
+                                <figure class="video_container"><iframe width="70%" height="460" src="https://www.youtube.com/embed/pv_n9FQRoZQ?si=j3CB2Sj4itd_1qlC" title="YouTube video player" 
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></figure>
+                            </div>
+                        </div>
+                
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Software Components</h2>
+                                <ul>
+                                    <li><strong>CRAM</strong>: A software toolbox for implementing autonomous robots. <a href="https://github.com/cram-code" target="_blank">Source Code</a></li>
+                                    <li><strong>KnowRob</strong>: A knowledge processing system for robots. <a href="https://github.com/knowrob/knowrob" target="_blank">Source Code</a></li>
+                                    <li><strong>OpenEASE</strong>: A web-based knowledge service providing robot and human activity data. <a href="https://github.com/ease-crc/openease" target="_blank">Source Code</a></li>
+                                    <li><strong>GISKARD</strong>: A framework for constraint- and optimization-based robot motion and planning control. <a href="https://github.com/SemRoCo/giskard" target="_blank">Source Code</a></li>
+                                    <li><strong>ROBOKUDO</strong>: A perception framework targeted for robot manipulation tasks. <a href="https://gitlab.informatik.uni-bremen.de/robokudo" target="_blank">Source Code</a></li>
+                                    <li><strong>PyCRAM</strong>: The Python 3 re-implementation of CRAM, serving as a toolbox for designing, implementing, and deploying software on autonomous robots. <a href="https://github.com/cram-code/pycram" target="_blank">Source Code</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Courses and Tutorials</h2>
+                                <ul>
+                                    <li><strong>Integrated Intelligent Systems</strong>: Covers contemporary AI techniques in cognitive robotics. <a href="https://ai.uni-bremen.de/teaching/le-iis-ws23" target="_blank">Course Link</a></li>
+                                    <li><strong>Robot Programming with ROS</strong>: An introduction to the Robot Operating System (ROS). <a href="https://ai.uni-bremen.de/teaching/cs-ros-ws23" target="_blank">Course Link</a></li>
+                                    <li><strong>SUTURO - sudo tidy-up-my-room</strong>: A project where students design their own applications to run on real robots. <a href="https://ai.uni-bremen.de/teaching/pr-suturo-ws21" target="_blank">Course Link</a></li>
+                                </ul>
+                                <p>For more information on these courses, visit the <a href="https://ai.uni-bremen.de/" target="_blank">University of Bremen's AI department page</a>.</p>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Authors and Contact Details</h2>
+                                <ul>
+                                    <li>
+                                        <strong>Prof. Michael Beetz, PhD</strong><br>
+                                        Head of Institute<br>
+                                        Tel: +49 421 218 64001<br>
+                                        Email: <a href="mailto:beetz@cs.uni-bremen.de">beetz@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/michael_beetz" target="_blank">https://ai.uni-bremen.de/team/michael_beetz</a>
+                                    </li>
+                                    <li>
+                                        <strong>Vanessa Hassouna</strong><br>
+                                        Tel: +49 421 218 99651<br>
+                                        Email: <a href="mailto:hassouna@cs.uni-bremen.de">hassouna@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/vanessa_hassouna" target="_blank">https://ai.uni-bremen.de/team/vanessa_hassouna</a>
+                                    </li>
+                                </ul>
+                                <!-- <p>For contact information of other authors, please refer to the respective publications or the <a href="https://www.uni-bremen.de/en/university/contact" target="_blank">University of Bremen's contact directory</a>.</p> -->
+                            </div>
+                        </div>
+
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Publications</h2>
+                                <ul>
+                                    <li>
+                                        <strong>The Robot Household Marathon Experiment</strong> by Gayane Kazhoyan, Simon Stelter, Franklin Kenghagho Kenfack, Sebastian Koralewski, and Michael Beetz. Presented at the IEEE International Conference on Robotics and Automation (ICRA), 2021. 
+                                        <a href="https://arxiv.org/abs/2011.09792" target="_blank">DOI: 10.48550/arXiv.2011.09792</a>
+                                    </li>
+                                    <li>
+                                        <strong>Towards Plan Transformations for Real-World Mobile Fetch and Place</strong> by Gayane Kazhoyan, Arthur Niedzwiecki, and Michael Beetz. Presented at the IEEE International Conference on Robotics and Automation (ICRA), Paris, France, 2020, pp. 11011-11017. 
+                                        <a href="https://ieeexplore.ieee.org/document/9197446" target="_blank">DOI: 10.1109/ICRA40945.2020.9197446</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Section for Actionable Knowledge Graph Laboratory -->
+    <div class="modal fade" id="actionableKnowledgeGraphModal" tabindex="-1" aria-labelledby="actionableKnowledgeGraphModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="position: relative;">
+                <!-- Background Image -->
+                <div style="background-image: url('../images/grafik.png'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; opacity: 0.6;"></div>
+                
+                <!-- Overlay Content -->
+                <div class="modal-header" style="z-index: 2; position: relative; justify-content: center; background-color: transparent; border-bottom: none;">
+                    <h1 class="modal-title text-center fw-bold" style="color: black; font-size: 2.5rem;">Knowledge Graph Lab</h1>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+                </div>
+                <div class="modal-body" style="z-index: 2; position: relative; color: rgb(0, 0, 0);">
+                    <div class="container my-5">
+                        <!-- Description -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Description</h2>
+                                <p>This laboratory focuses on advancing robotic capabilities in performing core actions such as cutting, mixing, pouring, and transporting within dynamic, human-centered environments like homes.</p>
+                                <p>Every time we think that we are getting a little bit closer to a household robot, new research comes out showing just how far we have to go. Certainly, we have seen a lot of progress in specific areas like grasping and semantic understanding etc., but putting it all together into a hardware platform that can actually do things autonomously still seems to be a long way to go.
+
+                                    In a paper presented at ICRA 2021, researchers from the University of Bremen conducted a “Robot Household Marathon Experiment,” where a PR2 robot was tasked with first setting a table for a simple breakfast and then cleaning up afterwards in order to “investigate and evaluate the scalability and the robustness aspects of mobile manipulation.” While this may seem like something robots should have figured out, you might not be surprised to learn that it is actually still a significant challenge.</p>
+                            </div>
+                        </div>
+                
+                        <!-- Interactive Actions and Examples -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Interactive Actions and Examples</h2>
+                                <p>In this laboratory, you have the opportunity to explore knowledge graphs tailored to specific task domains, including fruit cutting, 
+                                    by utilizing resources like Wikipedia, biology textbooks, nutrition information sources, and instructional websites such as WikiHow. 
+                                    Additionally, you’ll have access to a comprehensive robotic action plan designed specifically for fruit cutting tasks. 
+                                    This enables you to select a specialized task, such as "quartering an apple," at which point the system will adapt the general fruit cutting 
+                                    plan to the nuances of your chosen task. The customized plan can then be tested and refined within a simulated environment.</p>
+                            </div>
+                        </div>
+                
+                        <!-- Parameterizing General Action Plans with Web Knowledge -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Parameterizing General Action Plans with Web Knowledge</h2>
+                                <p>To enable robotic agents to handle unknown task variations by parameterizing general action plans using web knowledge, we employ a specific 
+                                    architecture. The robot accesses a general action designator of cutting that can be parameterized. Upon receiving a task request, it can query 
+                                    the graph database with the knowledge graph directly via its SPARQL REST API or use a knowledge framework with additional functionalities 
+                                    such as the KnowRob knowledge processing system and pose Prolog queries, which are then translated to SPARQL queries.</p>
+                                    <div class="image-container bg-light bg-opacity-25" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                        <img src="../images/labs/kg_lab1.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                    </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gathering and Linking Web Knowledge -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Gathering and Linking Web Knowledge</h2>
+                                <p>To support robotic agents in executing variations of cutting on different fruits and vegetables, we collect two types of knowledge in our 
+                                    knowledge graph: action and object knowledge. Both kinds of knowledge need to be linked to enable task execution. Action knowledge covers 
+                                    all properties of a specific manipulation action necessary for successful completion, influenced by the participating objects. Object knowledge includes all relevant information about the objects involved in the task execution, such as tools, containers, and targets.</p>
+                            </div>
+                        </div>
+                
+                        <!-- WikiHow Analysis Tool -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">WikiHow Analysis Tool</h2>
+                                <p>To gather additional knowledge about manipulation actions and their associated verbs, we developed a tool analyzing a WikiHow corpus. 
+                                    The goal is to better understand manipulation verbs and their parameterization for different objects, goals, and environments. 
+                                    The tool uses basic NLP techniques like Part-of-Speech Tagging and Coreference Resolution from the Stanford CoreNLP Toolkit to extract verb 
+                                    frames.</p>
+                                <div class="image-container bg-light bg-opacity-25" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="../images/labs/kg_lab2.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Knowledge -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Action Knowledge</h2>
+                                <p>The action knowledge covers all properties of a specific manipulation action that are necessary for successfully completing the action and is thus also influenced by the participating objects. In general we rely on SOMA3 and its upper ontology DUL4 to model agent participation in events as well as roles objects play during events and how events effect objects.</p>
+                                <p>For executing Cutting actions and its variants, we first collect synonyms and hyponyms for Cutting using WordNet5, VerbNet6 and FrameNet7. After filtering these verbs regarding their relevance for the cooking domain using our WikiHow Analysis Tool, we propose to divide them into action groups with similar motion patterns. Based on our observations in WikiHow data and cooking videos, we differentiate between these tasks in three parameters:</p>
+                                <ul>
+                                    <li>position: Where should the robot place its cutting tool?</li>
+                                    <li>repetitions: How many cuts should the robot perform?</li>
+                                    <li>prior task: Does the robot need to execute a specific action group beforehand?</li>
+                                </ul>
+                                <p>Based on the remaining 14 words, we created the following 6 action groups:</p>
+                                <div class="image-container bg-light bg-opacity-25" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="../images/labs/kg_lab3.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Object Knowledge -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Object Knowledge</h2>
+                                <p>As the name suggests, object knowledge covers all relevant information about the objects involved in the task execution (e.g. tools, containers, targets). Of course, the relevance of each piece of information depends on the task to be executed. So, for the task of ”Cutting an apple", the apple’s size or anatomical structure is relevant, but whether it is biodegradable or not is irrelevant.</p>
+                                <p>For the target group of fruits & vegetables, we gather the following information in our knowledge graph:</p>
+                                <ul>
+                                    <li>food classes (e.g. stone fruit or citrus fruit)</li>
+                                    <li>fruits and vegetables</li>
+                                    <li>anatomical parts</li>
+                                    <li>edibility of the anatomical parts</li>
+                                    <li>tool to remove the anatomical parts</li>
+                                </ul>
+                                <p>We gather these information from structured sources like FoodOn8 and the PlantOntology9, but also from unstructured sources like Recipe1M+10 or wikihow.</p>
+                                <p>In total, the knowledge graph contains:</p>
+                                <ul>
+                                    <li>6 food classes</li>
+                                    <li>18 fruits & 1 vegetable</li>
+                                    <li>4 anatomical parts (core, peel, stem, shell)</li>
+                                    <li>3 edibility classes (edible, should be avoided, must be avoided)</li>
+                                    <li>5 tools (nutcracker, knife, spoon, peeler, hand)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Knowledge Linking -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Knowledge Linking</h2>
+                                <p>After collecting the aforementioned action and object knowledge, this knowledge needs to be linked in our knowledge graph, so that a robot can infer the correct tool to use for a given task or the correct object to cut. We set both kinds of knowledge in relation through dispositions and affordances, as visualised below for an apple:</p>
+                                <div class="image-container bg-light bg-opacity-25" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="../images/labs/kg_lab4.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+                                <p>In general, a disposition describes the property of an object, thereby enabling an agent to perform a certain task11 as in a knife can be used for cutting, whereas an affordance describes what an object or the environment offers an agent12 as in an apple affords to be cut. Both concepts are set in relation by stating that dispositions allow objects to participate in events, realising affordances that are more abstract descriptions of dispositions3. In our concrete knowledge graph, this is done by using the affordsTask, affordsTrigger and hasDisposition relations introduced in the SOMA ontology3.</p>
+                                <p>In general, the robot needs to have access to a general action designator of cutting that can be parameterised. When the robot is given a task request, it can either query the graph database with the knowledge graph directly via its SPARQL REST API or use a knowledge framework with additional functionalities such as the KnowRob knowledge processing system3 and pose Prolog queries, which then are translated to SPARQL queries. More information on the different ways of querying the knowledge graph can be found here.</p>
+                                <div class="image-container bg-light bg-opacity-25" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="../images/labs/kg_lab5.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Authors and Contact Details -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Authors and Contact Details</h2>
+                                <ul>
+                                    <li>
+                                        <strong>Michaela Kümpel</strong><br>
+                                        Tel: +49 421 218 64021<br>
+                                        Email: <a href="mailto:michaela.kuempel@cs.uni-bremen.de">michaela.kuempel@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/michaela-kuempel/" target="_blank">https://ai.uni-bremen.de/team/michaela-kuempel/</a>
+                                    </li>
+                                    <li>
+                                        <strong>Vanessa Hassouna</strong><br>
+                                        Tel: +49 421 218 99651<br>
+                                        Email: <a href="mailto:hassouna@cs.uni-bremen.de">hassouna@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/vanessa-hassouna/" target="_blank">https://ai.uni-bremen.de/team/vanessa-hassouna/</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                         <!-- References -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">References</h2>
+                                <ul>
+                                    <li>
+                                      L. Zhang, Q. Lyu, and C. Callison-Burch, ‘Reasoning about Goals, Steps, and Temporal Ordering with WikiHow’, in Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), Online: Association for Computational Linguistics, 2020, pp. 4630–4639. <a href="https://doi.org/10.18653/v1/2020.emnlp-main.374">doi: 10.18653/v1/2020.emnlp-main.374</a>.
+                                    </li>
+                                    <li>
+                                      C. D. Manning, M. Surdeanu, J. Bauer, J. Finkel, S. J. Bethard, and D. McClosky, ‘The Stanford CoreNLP Natural Language Processing Toolkit’, in Proceedings of the 52nd Annual Meeting of the Association for Computational Linguistics: System Demonstrations, 2014, pp. 55–60. Online
+                                    </li>
+                                    <li>
+                                      D. Beßler et al., ‘Foundations of the Socio-physical Model of Activities (SOMA) for Autonomous Robotic Agents’, in Formal Ontology in Information Systems, vol. 344, IOS Press, 2022, pp. 159–174. Accessed: Jul. 25, 2022. <a href="https://doi.org/10.3233/FAIA210379">doi: 10.3233/FAIA210379</a>.
+                                    </li>
+                                    <li>
+                                      V. Presutti and A. Gangemi, ‘Dolce+ D&S Ultralite and its main ontology design patterns’, in Ontology Engineering with Ontology Design Patterns: Foundations and Applications, P. Hitzler, A. Gangemi, K. Janowicz, A. Krisnadhi, and V. Presutti, Eds. AKA GmbH Berlin, 2016, pp. 81–103.
+                                    </li>
+                                    <li>
+                                      G. A. Miller, ‘WordNet: A Lexical Database for English’, Communications of the ACM, vol. 38, no. 11, pp. 39–41, 1995, <a href="https://doi.org/10.1145/219717.219748">doi: 10.1145/219717.219748</a>.
+                                    </li>
+                                    <li>
+                                      K. K. Schuler, ‘VerbNet: A broad-coverage, comprehensive verb lexicon’, PhD Thesis, University of Pennsylvania, 2005.
+                                    </li>
+                                    <li>
+                                      C. F. Baker, C. J. Fillmore, and J. B. Lowe, ‘The Berkeley FrameNet Project’, in Proceedings of the 36th annual meeting on Association for Computational Linguistics -, Montreal, Quebec, Canada: Association for Computational Linguistics, 1998, p. 86. <a href="https://doi.org/10.3115/980845.980860">doi: 10.3115/980845.980860</a>.
+                                    </li>
+                                    <li>
+                                      D. M. Dooley et al., ‘FoodOn: a harmonized food ontology to increase global food traceability, quality control and data integration’, npj Sci Food, vol. 2, no. 1, Art. no. 1, Dec. 2018, <a href="https://doi.org/10.1038/s41538-018-0032-6">doi: 10.1038/s41538-018-0032-6</a>.
+                                    </li>
+                                    <li>
+                                      P. Jaiswal et al., ‘Plant Ontology (PO): a Controlled Vocabulary of Plant Structures and Growth Stages’, Comparative and Functional Genomics, vol. 6, no. 7–8, pp. 388–397, 2005, <a href="https://doi.org/10.1002/cfg.496">doi: 10.1002/cfg.496</a>.
+                                    </li>
+                                    <li>
+                                      J. Marín et al., ‘Recipe1M+: A Dataset for Learning Cross-Modal Embeddings for Cooking Recipes and Food Images’, IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 43, no. 1, pp. 187–203, Jan. 2021, <a href="https://doi.org/10.1109/TPAMI.2019.2927476">doi: 10.1109/TPAMI.2019.2927476</a>.
+                                    </li>
+                                    <li>
+                                      M. T. Turvey, ‘Ecological foundations of cognition: Invariants of perception and action.’, in Cognition: Conceptual and methodological issues., H. L. Pick, P. W. van den Broek, and D. C. Knill, Eds. Washington: American Psychological Association, 1992, pp. 85–117. <a href="https://doi.org/10.1037/10564-004">doi: 10.1037/10564-004</a>.
+                                    </li>
+                                    <li>
+                                      M. H. Bornstein and J. J. Gibson, ‘The Ecological Approach to Visual Perception’, The Journal of Aesthetics and Art Criticism, vol. 39, no. 2, p. 203, 1980, <a href="https://doi.org/10.2307/429816">doi: 10.2307/429816</a>.
+                                    </li>
+                                  </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="manipulationLabModal" tabindex="-1" aria-labelledby="manipulationLabModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="position: relative;">
+                <!-- Background Image -->
+                <div style="background-image: url('../images/grafik.png'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; opacity: 0.6;"></div>
+                
+                <!-- Overlay Content -->
+                <div class="modal-header" style="z-index: 2; position: relative; justify-content: center; background-color: transparent; border-bottom: none;">
+                    <h1 class="modal-title text-center fw-bold" style="color: black; font-size: 2.5rem;">Manipulation Lab</h1>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+                </div>
+                <div class="modal-body" style="z-index: 2; position: relative; color: rgb(0, 0, 0);">
+                    <div class="container my-5">
+                        <!-- <h1 class="text-center mb-4">Domestic Object Transportation Laboratory</h1> -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Description</h2>
+                                <p>This laboratory focuses on advancing robotic capabilities in performing core actions such as cutting, mixing, pouring, and transporting within dynamic, human-centered environments like homes.</p>
+
+                                <div class="image-container bg-light bg-opacity-25" style="height: 500px; display: flex; align-items: center; justify-content: center;">
+                                    <img src="../images/pr2_image_sequence.png" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                </div>
+
+                                <p>Every time we think that we are getting a little bit closer to a household robot, new research comes out showing just how far we have to go. Certainly, we have seen a lot of progress in specific areas like grasping and semantic understanding etc., but putting it all together into a hardware platform that can actually do things autonomously still seems to be a long way to go.</p>
+
+                                <p>In a paper presented at ICRA 2021, researchers from the University of Bremen conducted a “Robot Household Marathon Experiment,” where a PR2 robot was tasked with first setting a table for a simple breakfast and then cleaning up afterwards in order to “investigate and evaluate the scalability and the robustness aspects of mobile manipulation.” While this may seem like something robots should have figured out, you might not be surprised to learn that it is actually still a significant challenge.</p>
+
+                                <figure class="video_container"><iframe width="70%" height="460" src="https://www.youtube.com/embed/pv_n9FQRoZQ?si=j3CB2Sj4itd_1qlC" title="YouTube video player" 
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></figure>
+                            </div>
+                        </div>
+                
+
+                
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Authors and Contact Details</h2>
+                                <ul>
+                                    <li>
+                                        <strong>Prof. Michael Beetz, PhD</strong><br>
+                                        Head of Institute<br>
+                                        Tel: +49 421 218 64001<br>
+                                        Email: <a href="mailto:beetz@cs.uni-bremen.de">beetz@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/michael_beetz" target="_blank">https://ai.uni-bremen.de/team/michael_beetz</a>
+                                    </li>
+                                    <li>
+                                        <strong>Vanessa Hassouna</strong><br>
+                                        Tel: +49 421 218 99651<br>
+                                        Email: <a href="mailto:hassouna@cs.uni-bremen.de">hassouna@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/vanessa_hassouna" target="_blank">https://ai.uni-bremen.de/team/vanessa_hassouna</a>
+                                    </li>
+                                </ul>
+                                <!-- <p>For contact information of other authors, please refer to the respective publications or the <a href="https://www.uni-bremen.de/en/university/contact" target="_blank">University of Bremen's contact directory</a>.</p> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="NEEMsModal" tabindex="-1" aria-labelledby="NEEMsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="position: relative;">
+                <!-- Background Image -->
+                <div style="background-image: url('../images/grafik.png'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; opacity: 0.6;"></div>
+                
+                <!-- Overlay Content -->
+                <div class="modal-header" style="z-index: 2; position: relative; justify-content: center; background-color: transparent; border-bottom: none;">
+                    <h1 class="modal-title text-center fw-bold" style="color: black; font-size: 2.5rem;">NEEMs Demonstration Lab</h1>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+                </div>
+                <div class="modal-body" style="z-index: 2; position: relative; color: rgb(0, 0, 0);">
+                    <div class="container my-5">
+                        <!-- <h1 class="text-center mb-4">Domestic Object Transportation Laboratory</h1> -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Description</h2>
+                                <p>openEASE is a cutting-edge, web-based knowledge service that leverages the KnowRob robot knowledge representation and reasoning system to offer a machine-understandable and processable platform for sharing knowledge and reasoning capabilities. It encompasses a broad spectrum of knowledge, including insights into agents (notably robots and humans), their environments (spanning objects and substances), tasks, actions, and detailed manipulation episodes involving both robots and humans. These episodes are richly documented through robot-captured images, sensor data streams, and full-body poses, providing a comprehensive understanding of interactions. OpenEASE is equipped with a robust query language and advanced inference tools, enabling users to conduct semantic queries and reason about the data to extract specific information. This functionality allows robots to articulate insights about their actions, motivations, methodologies, outcomes, and observations, thereby facilitating a deeper understanding of robotic operations and interactions within their environments.</p>
+
+                                <p>In this laboratory, you have access to openEASE, a web-based interactive platform that offers knowledge services. Through openEASE, you can choose from various knowledge bases, each representing a robotic experiment or an episode where humans demonstrate tasks to robots. To start, select a knowledge base—for instance, ”ease-2020-urobosim-fetch-and-place”—and activate it. Then, by clicking on the ”examples” button, you can choose specific knowledge queries to run on the selected experiment’s knowledge bases, facilitating a deeper understanding and interaction with the data. For a detailed overview of the episodes in openEASE click here.</p>
+
+                                <p>The information collected in the openEASE database consists of semantically labelled episodic memories. In order to make use of it, and to enhance it by additional meta information, we use and develop a set of knowledge processing tools. One of these tools is KnowRob, which is the base system for running the openEASE web console. It supplies a large set of logical Prolog predicates that allow access to, and reasoning about the information stored in the database. Furthermore, meta information enhancing tools such as a labelling tool for recorded sequences are available. In the labelling tool, sequences of recorded activity can be annotated with semantic labels of what action was performed, using which tools, and with which outcome. The collected episodic memories are uploaded to the NEEMHub.</p>
+
+                                <figure class="video_container"><iframe width="70%" height="460" src="https://www.youtube.com/embed/jFjQtnqAeVU?si=ZlO3vSAfZpegwzss" title="YouTube video player" 
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></figure>
+                            </div>
+                        </div>
+                               
+                        <!-- <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Authors and Contact Details</h2>
+                                <ul>
+                                    <li>
+                                        <strong>Prof. Michael Beetz, PhD</strong><br>
+                                        Head of Institute<br>
+                                        Tel: +49 421 218 64001<br>
+                                        Email: <a href="mailto:beetz@cs.uni-bremen.de">beetz@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/michael_beetz" target="_blank">https://ai.uni-bremen.de/team/michael_beetz</a>
+                                    </li>
+                                    <li>
+                                        <strong>Vanessa Hassouna</strong><br>
+                                        Tel: +49 421 218 99651<br>
+                                        Email: <a href="mailto:hassouna@cs.uni-bremen.de">hassouna@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/vanessa_hassouna" target="_blank">https://ai.uni-bremen.de/team/vanessa_hassouna</a>
+                                    </li>
+                                </ul>
+                                <p>For contact information of other authors, please refer to the respective publications or the <a href="https://www.uni-bremen.de/en/university/contact" target="_blank">University of Bremen's contact directory</a>.</p>
+                            </div>
+                        </div> -->
+            
+                
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Courses and Tutorials</h2>
+                                <ul>
+                                    <li><strong>openEASE</strong>: Check out the openEASE tutorial <a href="https://data.open-ease.org/user/sign-in?next=/tutorials/" target="_blank">openEASE</a></li>
+                                    <!-- <li><strong>Robot Programming with ROS</strong>: An introduction to the Robot Operating System (ROS). <a href="https://ai.uni-bremen.de/teaching/cs-ros-ws23" target="_blank">Course Link</a></li>
+                                    <li><strong>SUTURO - sudo tidy-up-my-room</strong>: A project where students design their own applications to run on real robots. <a href="https://ai.uni-bremen.de/teaching/pr-suturo-ws21" target="_blank">Course Link</a></li> -->
+                                </ul>
+                                <p>For more information on these courses, visit the <a href="https://ai.uni-bremen.de/" target="_blank">University of Bremen's AI department page</a>.</p>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Publications</h2>
+                                <ul>
+                                    <li>
+                                      Moritz Tenorth, Jan Winkler, Daniel Beßler and Michael Beetz, “Open-EASE – A Cloud-Based Knowledge Service for Autonomous Learning”, In KI – Künstliche Intelligenz, Springer Berlin Heidelberg, 2015, <a href="https://doi.org/10.1007/s13218-015-0364-1">doi: 10.1007/s13218-015-0364-1</a>
+                                    </li>
+                                    <li>
+                                      Michael Beetz, Moritz Tenorth and Jan Winkler, “Open-EASE – A Knowledge Processing Service for Robots and Robotics/AI Researchers”, In IEEE International Conference on Robotics and Automation (ICRA), Seattle, Washington, USA, 2015, <a href="https://doi.org/10.1109/ICRA.2015.7139458">doi: 10.1109/ICRA.2015.7139458</a>. Finalist for the Best Cognitive Robotics Paper Award.
+                                    </li>
+                                    <li>
+                                      Daniel Beßler, Robert Porzel, Mihai Pomarlan, Abhijit Vyas, Sebastian Höffner, Michael Beetz, Rainer Malaka and John Bateman, “Foundations of the Socio-physical Model of Activities (SOMA) for Autonomous Robotic Agents”, In Formal Ontology in Information Systems - Proceedings of the 12th International Conference, FOIS 2021, Bozen-Bolzano, Italy, September 13-16, 2021, IOS Press, 2021, <a href="https://doi.org/10.3233/FAIA210379">doi: 10.3233/FAIA210379</a>
+                                    </li>
+                                    <li>
+                                      KnowRob 2.0 – A 2nd Generation Knowledge Processing Framework for Cognition-enabled Robotic Agents (Michael Beetz, Daniel Beßler, Andrei Haidu, Mihai Pomarlan, Asil Kaan Bozcuoglu and Georg Bartels), In International Conference on Robotics and Automation (ICRA), 2018
+                                    </li>
+                                  </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="retailRoboticsModal" tabindex="-1" aria-labelledby="retailRoboticsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="position: relative;">
+                <!-- Background Image -->
+                <div style="background-image: url('../images/grafik.png'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; opacity: 0.6;"></div>
+                
+                <!-- Overlay Content -->
+                <div class="modal-header" style="z-index: 2; position: relative; justify-content: center; background-color: transparent; border-bottom: none;">
+                    <h1 class="modal-title text-center fw-bold" style="color: black; font-size: 2.5rem;">Retail Robotics Lab</h1>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+                </div>
+                <div class="modal-body" style="z-index: 2; position: relative; color: rgb(0, 0, 0);">
+                    <div class="container my-5">
+                        <!-- Description -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Description</h2>
+                                <p>The Dynamic Retail Robotics Laboratory addresses the complex challenges robots face within retail settings. Robots in this lab autonomously deploy in retail stores, adapting to changing environments, including shelf layouts and product placements. They manage inventory, guide customers, and integrate real-time product information from various sources into actionable knowledge. The goal is to develop robots that support shopping and inventory tasks while seamlessly adjusting to new products and store layouts, enhancing customer service and operational efficiency in the retail ecosystem.</p>
+                            </div>
+                        </div>
+                
+                        <!-- Interactive Actions and Examples -->
+                        <!-- <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Interactive Actions and Examples</h2>
+                                <p>In this laboratory, two versatile robot action plans tailored for retail environments are provided. The first plan focuses on creating semantic digital twins of shelf systems in retail stores, while the second is designed for restocking shelves. Users have the flexibility to choose the specific task, robot, and environment. Once selected, the action plan can be executed through a software container, streamlining the process of implementing these robotic solutions in real-world retail settings.</p>
+                            </div>
+                        </div> -->
+                
+                        <!-- Publications -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">ProductKG: A Product Knowledge Graph for User Assistance in Daily Activities</h2>
+                                <ul>
+                                    <li>
+                                        <!-- <strong>ProductKG: A Product Knowledge Graph for User Assistance in Daily Activities</strong><br> -->
+                                        <strong>Abstract:</strong> The Web offers plenty of product information that is valuable for supporting decision processes. Research on Web knowledge acquisition and the Semantic Web has led to the creation of many domain ontologies and Web applications. What still is lacking is a connection of such knowledge to the real world. If object information is linked to environment information, users can get better, more personalised support in their daily activities like shopping or cooking since this enables them to link information about leftover products in the fridge to recipe information or a health profile to products the user is looking at in the store. </p>
+                                        <p>It has been shown that semantic Digital Twins can successfully link object to environment information that can be used by agents like smartphone or service robot. Such semantic Digital Twins can offer even more services to users if they are connected to product information from the Web. This work introduces ProductKG, an open-source product knowledge graph integrating modular product information from the Web as well as accurate environment information from a semantic Digital Twin that can be customised for different applications and used devices as an example knowledge graph for assisting users in daily activities. We describe the design process and modularity of the knowledge graph as well as example applications of it, including an Augmented Reality shopping assistant, a dietary recommender and a hands-free recipe application. The modular ontologies enable personalisation of applications as well as accessing object information in relation to the current environment. We evaluate the acceptance of one example application through a user study. ProductKG is publicly available and will be maintained and extended over time in order to facilitate various applications such as in the retail and household domain.<br>
+                                        <strong>Resource Website:</strong> <a href="https://michaelakuempel.github.io/ProductKG/" target="_blank">https://michaelakuempel.github.io/ProductKG/</a><br>
+                                        <strong>Application Website:</strong> <a href="http://productkg.informatik.uni-bremen.de/" target="_blank">http://productkg.informatik.uni-bremen.de/</a><br> and <a href="https://ai.uni-bremen.de/productkg" target="_blank">https://ai.uni-bremen.de/productkg/</a><br>
+                                        <figure class="video_container"><iframe width="70%" height="460" src="https://www.youtube.com/embed/nb-q137DylY?si=RFxBqHGVwc7XK47x" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></figure>
+                                        <strong>Publication:</strong> Kümpel, M. and Beetz, M. (2023). ProductKG: A Product Knowledge Graph for User Assistance in Daily Activities. In: Ontology Showcase and Demonstrations Track, 9th Joint Ontology Workshops (JOWO 2023), co-located with FOIS 2023.
+                                    </li>
+                                </ul>
+                                <h2 class="card-title">Robots Collecting Data: Modelling Stores</h2>
+                                <ul>
+                                    <li>
+                                        <!-- <strong>Robots Collecting Data: Modelling Stores</strong><br> -->
+                                        <strong>Abstract:</strong> Retail stores are a promising application domain for autonomous robotics. Unlike other domains, such as households, the environments are more structured, products are designed to be easily recognizable, and items are consciously placed to facilitate their detection and manipulation. In this book chapter we exploit these properties and propose a mobile robot systems that can be deployed in drugstores and autonomously acquire a semantic digital twin model of the store. This facilitates autonomous robot fetch and place and shopping in a virtual replica of the store. The potential commercial impact is substantial because in the retail business stores are an information blackbox and being able to automate inventory on a regular basis could improve the knowledge of retailers about their business drastically. <br>
+                                        <p>In this video the Kuka KMR IIWA performs a stock tacking action in the retail lab.In this video the Kuka KMR IIWA performs a stock tacking action in the retail lab.</p>
+                                        <figure class="video_container"><iframe width="70%" height="460" src="https://www.youtube.com/embed/nwfbI4-rJUY?si=DoCZDlNF8PIjiXDb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></figure>
+                                        <strong>Publication:</strong> Beetz M, Stelter S, et al. (2022). *Robotics for Intralogistics in Supermarkets and Retail Stores*. Cham: Springer.
+                                    </li>
+                                </ul>
+                                <h2 class="card-title">Manipulation Planning and Control for Shelf Replenishment</h2>
+                                <ul>
+                                    <li>
+                                        <!-- <strong>Manipulation Planning and Control for Shelf Replenishment</strong><br> -->
+                                        <strong>Abstract:</strong> Manipulation planning and control are relevant building blocks of a robotic system and their tight integration is a key factor to improve robot autonomy and allows robots to perform manipulation tasks of increasing complexity, such as those needed in the in-store logistics domain. Supermarkets contain a large variety of objects to be placed on the shelf layers with specific constraints, doing this with a robot is a challenge and requires a high dexterity. However, an integration of reactive grasping control and motion planning can allow robots to perform such tasks even with grippers with limited dexterity. The main contribution of the letter is a novel method for planning manipulation tasks to be executed using a reactive control layer that provides more control modalities, i.e., slipping avoidance and controlled sliding. Experiments with a new force/tactile sensor equipping the gripper of a mobile manipulator show that the approach allows the robot to successfully perform manipulation tasks unfeasible with a standard fixed grasp.<br>
+                                        <figure class="video_container"><iframe width="70%" height="460" src="https://www.youtube.com/embed/7IaRh5FfA5E?si=Rtqxnc7-u5AbxWMy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></figure>
+                                        <strong>Publication:</strong> Costanzo M, Stelter S, et al. (2020). IEEE Robotics and Automation Letters.
+                                    </li>
+                                </ul>
+                                <h2 class="card-title">Robotic Clerks: Autonomous Shelf Refilling</h2>
+                                <ul>
+                                    <li>
+                                        <!-- <strong>Robotic Clerks: Autonomous Shelf Refilling</strong><br> -->
+                                        <strong>Abstract:</strong> Nowadays, robots are used in the retail market mostly for warehousing, while they could be of great help in different in-store logistics processes as discussed in previous chapters. The present chapter deals with the shelf replenishment task; its execution by a robot requires overcoming of technological and methodological barriers in the handling of single products rather than the boxes containing them. The challenges a robot has to face to replenish a supermarket shelf are all related to manipulation in narrow spaces of products with a large variety of size, shape, weight, and fragility. The solution proposed by REFILLS is based on a robotic system where perception is used at all hierarchical levels of the control architecture, from high-level task planning algorithms and motion planning to reactive control layers based on physics models, where tactile and visual perception are combined to achieve highly reliable manipulation of items. Experiments in an emulated supermarket shelf are carried out to demonstrate the effectiveness of the approach.<br>
+                                        <figure class="video_container"><iframe width="70%" height="460" src="https://www.youtube.com/embed/7SX306sxEaI?si=eZ1R4ebIeHURaJT5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></figure>
+                                        <strong>Publication:</strong> Cavallo A, Costanzo M, et al. (2021). *Robotics in Retail Applications*.
+                                    </li>
+                                </ul>
+                                <h2 class="card-title">Shelf replenishment in Simulation</h2>
+                                <figure class="video_container"><iframe width="70%" height="460" src="https://www.youtube.com/embed/lDCk80t-uqM?si=Kjvv9YP5BImjRl19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></figure>
+                            </div>
+                        </div>
+                
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Software Components</h2>
+                                <ul>
+                                    <li><strong>CRAM</strong>: A software toolbox for implementing autonomous robots. <a href="https://github.com/cram-code" target="_blank">Source Code</a></li>
+                                    <li><strong>KnowRob</strong>: A knowledge processing system for robots. <a href="https://github.com/knowrob/knowrob" target="_blank">Source Code</a></li>
+                                    <li><strong>OpenEASE</strong>: A web-based knowledge service providing robot and human activity data. <a href="https://github.com/ease-crc/openease" target="_blank">Source Code</a></li>
+                                    <li><strong>GISKARD</strong>: A framework for constraint- and optimization-based robot motion and planning control. <a href="https://github.com/SemRoCo/giskard" target="_blank">Source Code</a></li>
+                                    <li><strong>ROBOKUDO</strong>: A perception framework targeted for robot manipulation tasks. <a href="https://gitlab.informatik.uni-bremen.de/robokudo" target="_blank">Source Code</a></li>
+                                    <li><strong>PyCRAM</strong>: The Python 3 re-implementation of CRAM, serving as a toolbox for designing, implementing, and deploying software on autonomous robots. <a href="https://github.com/cram-code/pycram" target="_blank">Source Code</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                
+                        <!-- Contact Information -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Contact Information</h2>
+                                <ul>
+                                    <li>
+                                        <strong>Dr. Michaela Kümpel</strong><br>
+                                        Tel: +49 421 218 64021<br>
+                                        Email: <a href="mailto:michaela.kuempel@cs.uni-bremen.de">michaela.kuempel@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/michaela_kuempel" target="_blank">Dr. Michaela Kümpel</a>
+                                    </li>
+                                    <li>
+                                        <strong>Simon Stelter</strong><br>
+                                        Tel: +49 421 218 64014<br>
+                                        Email: <a href="mailto:stelter@cs.uni-bremen.de">stelter@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/simon_stelter" target="_blank">Simon Stelter</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="virtualProgrammingModal" tabindex="-1" aria-labelledby="virtualProgrammingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="position: relative;">
+                <!-- Background Image -->
+                <div style="background-image: url('../images/grafik.png'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; opacity: 0.6;"></div>
+                
+                <!-- Overlay Content -->
+                <div class="modal-header" style="z-index: 2; position: relative; justify-content: center; background-color: transparent; border-bottom: none;">
+                    <h1 class="modal-title text-center fw-bold" style="color: black; font-size: 2.5rem;">Visual Programming for Robots</h1>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+                </div>
+                <div class="modal-body" style="z-index: 2; position: relative; color: rgb(0, 0, 0);">
+                    <div class="container my-5">
+                        <!-- <h1 class="text-center mb-4">Domestic Object Transportation Laboratory</h1> -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Description</h2>
+                                <p>This program employs a visual programming interface powered by Blockly, offering an intuitive and user-friendly method for programming robots. Unlike traditional text-based coding languages, which can be daunting for beginners and young learners, Blockly simplifies the learning process, allowing participants to engage in programming activities without feeling overwhelmed. Through this approach, newcomers are given the opportunity to program robots within a virtual research lab environment to accomplish various tasks, such as making popcorn, serving dinner, and going shopping.</p>
+
+                                <video width="100%" height="480" controls="">
+                                    <source src="../images/labs/blockly-demo.mp4" type="video/mp4"></video>
+                            </div>
+                        </div>
+                
+                        <!-- <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Authors and Contact Details</h2>
+                                <ul>
+                                    <li>
+                                        <strong>Prof. Michael Beetz, PhD</strong><br>
+                                        Head of Institute<br>
+                                        Tel: +49 421 218 64001<br>
+                                        Email: <a href="mailto:beetz@cs.uni-bremen.de">beetz@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/michael_beetz" target="_blank">https://ai.uni-bremen.de/team/michael_beetz</a>
+                                    </li>
+                                    <li>
+                                        <strong>Vanessa Hassouna</strong><br>
+                                        Tel: +49 421 218 99651<br>
+                                        Email: <a href="mailto:hassouna@cs.uni-bremen.de">hassouna@cs.uni-bremen.de</a><br>
+                                        Profile: <a href="https://ai.uni-bremen.de/team/vanessa_hassouna" target="_blank">https://ai.uni-bremen.de/team/vanessa_hassouna</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="learnROSModal" tabindex="-1" aria-labelledby="learnROSModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="position: relative;">
+                <!-- Background Image -->
+                <div style="background-image: url('../images/grafik.png'); background-size: cover; background-position: center; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; opacity: 0.6;"></div>
+                
+                <!-- Overlay Content -->
+                <div class="modal-header" style="z-index: 2; position: relative; justify-content: center; background-color: transparent; border-bottom: none;">
+                    <h1 class="modal-title text-center fw-bold" style="color: black; font-size: 2.5rem;">ROS Programming for Virtual Robot</h1>
+                    <button type="button" class="btn-close btn-close-black" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+                </div>
+                <div class="modal-body" style="z-index: 2; position: relative; color: rgb(0, 0, 0);">
+                    <div class="container my-5">
+                        <!-- <h1 class="text-center mb-4">Domestic Object Transportation Laboratory</h1> -->
+                        <div class="card mb-4 bg-light bg-opacity-25">
+                            <div class="card-body">
+                                <h2 class="card-title">Description</h2>
+                                <p>The lab ”Robot Programming with ROS” offers an immersive and practical approach to learning the intricacies of programming robots using the Robot Operating System (ROS). Set within the innovative context of virtual research building laboratories, this course provides students with a unique opportunity to apply theoretical concepts in a simulated real-world environment. The course materials, including exercise sheets and programming environments, are readily accessible on GitHub, allowing students to dive into practical, hands-on exercises that significantly enhance their learning experience. This deliberate integration of practical examples into the curriculum is designed to seamlessly connect theoretical knowledge with real-world application, equipping students with the necessary skills and confidence to tackle the challenges of robot programming in various professional settings. Through this course, learners are not just exposed to the fundamentals of ROS but are also prepared to navigate and innovate within the evolving landscape of robotics technology.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const categoryFilter = document.getElementById('categoryFilter');
-            const toolsFilter = document.getElementById('toolsFilter');
-            const searchInput = document.getElementById('searchInput');
-            const labCards = document.querySelectorAll('#labsGrid .col');
-
-            function filterLabs() {
-                const selectedCategory = categoryFilter.value;
-                const selectedTool = toolsFilter.value.toLowerCase();
-                const searchTerm = searchInput.value.toLowerCase();
-
-                labCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    const tool = card.getAttribute('data-tool');
-                    const title = card.querySelector('.card-title').textContent.toLowerCase();
-                    const description = card.querySelector('.card-text').textContent.toLowerCase();
-
-                    const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
-                    const matchesTool = selectedTool === 'all' || tool === selectedTool;
-                    const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
-
-                    if (matchesCategory && matchesTool && matchesSearch) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            }
-
-            categoryFilter.addEventListener('change', filterLabs);
-            toolsFilter.addEventListener('change', filterLabs);
-            searchInput.addEventListener('input', filterLabs);
-        });
-    </script>
 </body>
+
 </html>
 
