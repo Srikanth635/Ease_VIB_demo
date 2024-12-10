@@ -6,6 +6,8 @@
     <title>Background Image Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/boot.css">  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <style>
         .background {
             position: fixed;
@@ -18,6 +20,53 @@
             background-position: center;
             background-attachment: fixed;
             z-index: -1;
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50vw;
+            height: 50vh;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            color: black;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .modal-close:hover {
+            color: red;
+         }
+
+        /* Background overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
     </style>
 </head>
@@ -74,8 +123,8 @@
                     Through integrating artificial intelligence and cognitive technologies with robotics we aim to accelerate technological advancements and share them with the research community. 
                     Our mission is to build a vibrant community of researchers, educators, and innovators focused on the entire lifecycle of robotics technologies from conception to application.</p>
                 <div class="mt-4">
-                    <a href="#explore-labs" class="btn btn-lg callaction">Explore Labs</a>
-                    <a href="#learn-more" class="btn btn-lg ms-3 callaction">Learn More</a>
+                    <a href="./VirtualLab_directories.html" class="btn btn-lg callaction" target="_blank">Explore Labs</a>
+                    <a href="https://vib.ai.uni-bremen.de/" class="btn btn-lg ms-3 callaction" target="_blank">Learn More</a>
                 </div>
             </div>
         </header>
@@ -145,29 +194,246 @@
                         <p>Global Collaborations</p>
                     </div>
                 </div>
-                <div class="mt-5 text-center">
-                    <h5>Global Research Partners</h5>
-                    <img src="world-map.jpg" class="img-fluid" alt="Interactive World Map">
+
+                <!-- Impact Chart -->
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 50px 0;">
+                    <h2 style="text-align: center; margin-bottom: 20px;">Impacts of VRB and EASE</h2>
+                    <div style="position: relative; width: 100%; max-width: 400px;">
+                        <canvas id="myPieChart" style="width: 100%; height: auto;"></canvas>
+                    </div>
                 </div>
-                <div class="mt-5 text-center">
+            
+                <!-- Modal -->
+                <div id="modal" class="modal" style="margin-top: 10px;">
+                    <span id="modalClose" class="modal-close">&times;</span>
+                    <div class="modal-header" id="modalHeader">Details</div>
+                    <div id="modalContent">Details about the selected slice will appear here.</div>
+                </div>
+                <div id="overlay" class="overlay"></div>
+
+
+                <!-- <div class="mt-5 text-center">
                     <h5>Achievements Timeline</h5>
                     Milestone 1<br>
                     Milestone 2<br>
                     Milestone 3<br>
-                    <!-- <ul class="">
-                        <li>Milestone 1</li>
-                        <li>Milestone 2</li>
-                        <li>Milestone 3</li>
-                    </ul> -->
-                </div>
+                </div> -->
             </div>
         </section>
     </div>
 
+    <script>
+         const ctx = document.getElementById('myPieChart').getContext('2d');
+
+        // Impacts data
+        const data = {
+            labels: [
+                'Societal',
+                'Educational',
+                'Research',
+                'Technological',
+                'Industrial',
+                'Other'
+            ],
+            datasets: [{
+                label: 'Impacts of VRB and EASE',
+                data: [1, 1, 1, 1, 1, 1], // Equal values for each impact
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',  // Societal
+                    'rgba(54, 162, 235, 0.6)',  // Educational
+                    'rgba(255, 206, 86, 0.6)',  // Research
+                    'rgba(75, 192, 192, 0.6)',  // Technological
+                    'rgba(153, 102, 255, 0.6)', // Industrial
+                    'rgba(255, 159, 64, 0.6)'   // Other
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+
+        // HTML content for each modal
+        const htmlContent = {
+            Societal: `
+                <p class="text-black"><strong>Empowering Autonomy:</strong></p>
+                <ul class="text-black">
+                    <li>The VRB and EASE initiatives develop robots that support everyday tasks, enhancing the autonomy of individuals, especially those with physical or cognitive limitations.</li>
+                    <li>Addresses societal challenges, including aging populations and workforce shortages, by providing assistive technologies.</li>
+                </ul>
+                <p class="text-black"><strong>Inclusion and Accessibility:</strong></p>
+                <ul class="text-black">
+                    <li>Develops inclusive robotic solutions, adapting behaviors to diverse needs and cultural preferences.</li>
+                    <li>Enhances accessibility for the elderly, disabled, or those recovering from injuries, promoting independent living.</li>
+                </ul>
+                <p class="text-black"><strong>Quality of Life Enhancements</strong></p>
+                <ul class="text-black">
+                    <li>Robots alleviate physical and mental burdens, improving well-being and enabling individuals to participate in household and societal activities.</li>
+                </ul>
+            `,
+            Educational: `
+                <p class="text-black"><strong>Skill Development:</strong></p>
+                <ul class="text-black">
+                    <li>Establishes immersive learning environments and interactive resources, such as the VRB and the interactive textbook on AI and cognition-enabled robotics.</li>
+                    <li>Provides immersive tools for future innovators.</li>
+                    <li>Offers interdisciplinary education combining robotics, AI, psychology, and ethics, preparing future leaders in the field.</li>
+                </ul>
+                <p class="text-black"><strong>Global Knowledge Sharing:</strong></p>
+                <ul class="text-black">
+                    <li>Provides open access to tools and resources, promoting global collaboration and education in robotics.</li>
+                    <li>Encourages skill development across borders, bridging gaps between academia and industry.</li>
+                </ul>
+            `,
+            Research: `
+                <p class="text-black"><strong>Pioneering Co-Construction:</strong></p>
+                <ul class="text-black">
+                    <li>Advances human-robot interaction with a focus on co-construction, where robots and humans collaboratively complete tasks.</li>
+                    <li>Incorporates cognitive psychology and neuroscience insights into AI systems for dynamic task handling.</li>
+                </ul>
+                <p class="text-black"><strong>Open and Reproducible Science:</strong></p>
+                <ul class="text-black">
+                    <li>VRB enables researchers to conduct, replicate, and refine experiments remotely, ensuring reproducibility and transparency.</li>
+                </ul>
+                <p class="text-black"><strong>Integration of Generative AI:</strong></p>
+                <ul class="text-black">
+                    <li>Leverages generative AI and machine learning to enhance robot adaptability and understanding of open-world scenarios.</li>
+                </ul>
+            `,
+            Technological: `
+                <p class="text-black"><strong>Digital Twin Implementation:</strong></p>
+                <ul class="text-black">
+                    <li>The VRB serves as a digital twin of physical labs, enabling comprehensive testing, simulation, and innovation.</li>
+                </ul>
+                <p class="text-black"><strong>Scalable and Modular Systems:</strong></p>
+                <ul class="text-black">
+                    <li>Focuses on developing scalable solutions using advanced modular designs for cognitive systems.</li>
+                </ul>
+                <p class="text-black"><strong>CRAM Architecture:</strong></p>
+                <ul class="text-black">
+                    <li>Builds on the CRAM (Cognitive Robot Abstract Machine) to enable robots to reason, adapt, and act in real-world environments.</li>
+                </ul>
+            `,
+            Industrial: `
+                <p class="text-black"><strong>Industry-Academic Synergy:</strong></p>
+                <ul class="text-black">
+                    <li>Establishes partnerships with global industry leaders to translate research into real-world solutions.</li>
+                </ul>
+                <p class="text-black"><strong>Commercial Applications:</strong></p>
+                <ul class="text-black">
+                    <li>Collaborations with companies like UBICA and ArtiMinds integrate EASE technologies into practical use cases, such as retail digital twins and robotics for industrial applications.</li>
+                </ul>
+                <p class="text-black"><strong>Economic Growth:</strong></p>
+                <ul class="text-black">
+                    <li>Drives innovation in assistive technologies and robotics, with significant implications for industries like caregiving, retail, and automation.</li>
+                </ul>
+            `,
+            Other: `
+                <p class="text-black"><strong>Sustainability:</strong></p>
+                <ul class="text-black">
+                    <li>Reduces reliance on physical prototyping with virtual testing, minimizing environmental impact.</li>
+                    <li>Incorporates energy-efficient designs in robotics development and sustainable data management practices.</li>
+                </ul>
+                <p class="text-black"><strong>Ethical Robotics:</strong></p>
+                <ul class="text-black">
+                    <li>Implements ethics-by-design frameworks focusing on privacy, safety, and autonomy.</li>
+                    <li>Ensures robots align with societal values, supporting equitable and ethical access to technology.</li>
+                </ul>
+                <p class="text-black"><strong>Global Leadership:</strong></p>
+                <ul class="text-black">
+                    <li>Positions the University of Bremen and EASE as international leaders in cognition-enabled robotics research and education</li>
+                </ul>
+            `
+        };
+
+        // Define options for interactivity
+        const options = {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false // Disable the legend
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `Click for details about ${context.label} impact`;
+                        }
+                    }
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    formatter: function(value, context) {
+                        return context.chart.data.labels[context.dataIndex];
+                    }
+                }
+            },
+            hoverOffset: 10
+        };
+
+        // Register the plugin
+        Chart.register(ChartDataLabels);
+
+        // Create the chart
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: data,
+            options: options
+        });
+
+        // Modal handling
+        const modal = document.getElementById('modal');
+        const overlay = document.getElementById('overlay');
+        const modalClose = document.getElementById('modalClose');
+        const modalHeader = document.getElementById('modalHeader');
+        const modalContent = document.getElementById('modalContent');
+
+        // Show modal function
+        function showModal(label) {
+            // modalHeader.textContent = `${label} Impact`;
+            modalHeader.innerHTML = `<span class="text-black">${label} Impact</span>`;
+            modalContent.innerHTML = htmlContent[label]; // Ensure content matches label
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        // Hide modal function
+        function hideModal() {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Close modal on click
+        modalClose.addEventListener('click', hideModal);
+        overlay.addEventListener('click', hideModal);
+
+        // Add click event listener to the chart
+        document.getElementById('myPieChart').addEventListener('click', (event) => {
+            const points = myChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, true);
+
+            if (points.length) {
+                const index = points[0].index;
+                const label = data.labels[index];
+                if (htmlContent[label]) { // Ensure the label exists in htmlContent
+                    showModal(label);
+                }
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2024 EASE Virtual Research Building
     </footer>
+
 </body>
 </html>
